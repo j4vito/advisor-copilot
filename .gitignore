@@ -1,0 +1,20 @@
+# secrets
+.env
+
+# local environment and caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# runtime files
+data/log.jsonl
+data/sample_chats/
+# model answers: agent 3 removes this line in round 2, once the cache holds the final answers
+data/cache/
+
+# not ours to publish: the test statement, the calculator screenshot, scratch files
+*.pdf
+Screenshot*.png
+a.txt

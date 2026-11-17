@@ -1,0 +1,3 @@
+[cliente][2026-11-14T11:00][Hola, buenas. Mi pareja y yo (29 y 30 años) queremos comprar en Bilbao en unos seis meses. Los dos tenemos contrato indefinido.]
+[libeen][2026-11-14T11:08][¡Hola, Elena! ¿Cuánto ganáis al mes entre los dos, después de deudas, y cuánto tenéis ahorrado para la entrada?]
+[cliente][2026-11-14T11:20][Después de deudas, 3.000 € netos al mes entre los dos, aunque no tenemos ninguna deuda. Ahorrados tenemos 14.900 €.]

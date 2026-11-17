@@ -1,0 +1,45 @@
+{
+  "_note": "Trap: savings 15.100, just over the minimum. Income already net of a 200 € loan.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Madrid"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 1
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        35
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 2600,
+        "max": 2600
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 200
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 15100
+    }
+  },
+  "income_net_of_debts": "yes",
+  "net_income_status": "ok",
+  "fit": "fits",
+  "reply_kind": "offer",
+  "review": "normal"
+}

@@ -1,0 +1,45 @@
+{
+  "_note": "Trap: net income 2.150, a near miss on the 2.200 minimum (11.2): doubtful, not fails. Low end below the minimum, so not fits (11.1).",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Murcia"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 1
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        41
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 2150,
+        "max": 2150
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 20000
+    }
+  },
+  "income_net_of_debts": "yes",
+  "net_income_status": "doubtful",
+  "fit": "needs_data",
+  "reply_kind": "ask_info",
+  "review": "full"
+}

@@ -1,0 +1,42 @@
+{
+  "_note": "Trap: total 2.500 in msg 0 contradicts 1.200 + 900 = 2.100 in msg 3. The range straddles the minimum.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Zaragoza"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 2
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        33,
+        30
+      ]
+    },
+    "empleo": {
+      "status": "missing"
+    },
+    "ingresos": {
+      "status": "doubtful"
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 25000
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "doubtful",
+  "fit": "needs_data",
+  "reply_kind": "ask_info",
+  "review": "normal"
+}

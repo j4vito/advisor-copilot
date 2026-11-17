@@ -1,0 +1,3 @@
+[cliente][2026-11-16T09:20][Hola, soy Alberto. Tengo 41 años y soy administrativo en Murcia. Compro solo y me gustaría mudarme en unos tres meses.]
+[libeen][2026-11-16T09:31][¡Hola, Alberto! ¿Cuánto ganas al mes, después de deudas, y cuánto tienes ahorrado para la entrada?]
+[cliente][2026-11-16T09:44][Después de deudas, 2.150 € netos al mes, aunque no tengo ninguna. Ahorrados tengo 20.000 €.]

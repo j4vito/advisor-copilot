@@ -1,0 +1,46 @@
+{
+  "_note": "Sample chat. Debts declared, unknown if income is already net of them.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Valencia"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 2
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        31,
+        34
+      ]
+    },
+    "empleo": {
+      "status": "missing"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 3800,
+        "max": 3800
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 250
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 18000
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "doubtful",
+  "fit": "fits",
+  "reply_kind": "offer",
+  "review": "normal"
+}

@@ -1,0 +1,50 @@
+# Business rules. Change values here, never in code.
+# These are our own values, calibrated on the public example of the Libeen web calculator.
+
+qualification:
+  min_net_income: 2200        # euros per month, all buyers together, after debts
+  min_savings: 15000          # euros for the down payment
+  min_weeks_to_move: 4        # a purchase usually takes about 4 weeks
+  advisor_review_age: 60      # above this the advisor decides, the system never rejects by age
+  near_miss_pct: 0.03         # a value this close below a minimum is "doubtful" for the advisor, not a fail
+
+simulation:
+  savings_to_price: 0.088     # savings needed as a share of today's price
+  annual_payment_ratio: 0.0773  # yearly payment as a share of the price
+  effort_max: 0.40            # max share of net income that goes to the payment
+  savings_share: 0.30         # share of the payment that goes to the down payment
+  price_growth: 0.05          # yearly growth of the purchase price
+  years: 3
+  round_to: 100
+
+fields:                       # order of the table, fixed
+  - {key: zona,        label: "Zona"}
+  - {key: plazo,       label: "Plazo"}
+  - {key: compradores, label: "Compradores"}
+  - {key: edad,        label: "Edad"}
+  - {key: empleo,      label: "Empleo"}
+  - {key: ingresos,    label: "Ingresos declarados", group: calc}
+  - {key: deudas,      label: "Deudas",              group: calc}
+  - {key: net_income,  label: "Ingresos tras deudas", group: calc, computed: true}
+  - {key: ahorro,      label: "Ahorro"}
+
+reply_kinds:
+  offer:    "Informar de lo que podemos ofrecer"
+  ask_info: "Pedir más información"
+  decline:  "Decir con cuidado que ahora no encaja"
+
+draft:
+  banned_words: ["aprobado", "aprobada", "aprobados", "aprobadas", "garantizado", "garantizada", "seguro que"]
+  offer_disclaimer: "orientativo"
+  max_chars: 600
+  max_questions: 3            # an ask_info reply asks for at most this many things
+  ask_priority: [ingresos, ahorro, deudas, zona, plazo, compradores, empleo, edad]
+  hidden_fields: [edad]       # never shown to the draft model, never mentioned to the client
+  internal_terms: ["edad"]    # words that must not appear in a reply
+  offer_facts: [sim.max_price, sim.monthly_payment, sim.monthly_savings]   # the only simulation numbers an offer mentions
+
+snippets:                     # what the advisor would look up in the manual
+  confianza: "Libeen compra la casa que tú eliges y te la alquila con opción a compra, con el precio de compra fijado por contrato desde el primer día. Operamos a través de una SOCIMI regulada por la CNMV."
+  solo_alquiler: "No ofrecemos alquiler sin opción a compra."
+  aprobacion_escrita: "No podemos confirmar nada por escrito antes del análisis completo."
+  deudas_cuentan: "Las deudas sí cuentan: miramos los ingresos netos después de pagarlas."

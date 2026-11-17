@@ -1,0 +1,4 @@
+[cliente][2026-11-14T10:02][¡Hola! Hemos visto vuestro anuncio en Instagram. Somos mi pareja y yo, buscamos piso en Valencia para mudarnos antes del verano.]
+[libeen][2026-11-14T10:05][¡Hola! Encantados. Para ver si encajáis, ¿cuánto ganáis al mes entre los dos, después de deudas, y cuánto tenéis ahorrado para la entrada?]
+[cliente][2026-11-14T10:11][Unos 3.800 € netos entre los dos. Ahorrado tenemos 18.000 más o menos. Yo tengo 31 y él 34.]
+[cliente][2026-11-14T10:12][Ah, y pagamos un préstamo del coche de 250 € al mes, no sé si cuenta.]

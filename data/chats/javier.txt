@@ -1,0 +1,5 @@
+[cliente][2026-11-14T16:40][buenas, cuanto cuesta esto? me interesa algo por madrid o alrededores]
+[libeen][2026-11-14T16:52][¡Hola, Javier! Depende de la casa y de tu situación. ¿Compras solo o con alguien? ¿Y cuánto ganas al mes, más o menos?]
+[cliente][2026-11-14T17:03][solo. soy autonomo, depende del mes, entre 2000 y 3000]
+[cliente][2026-11-14T17:04][[audio 1:12]]
+[cliente][2026-11-14T17:05][y esto es fiable? no sera una estafa no]

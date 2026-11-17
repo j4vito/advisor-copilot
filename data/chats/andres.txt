@@ -1,0 +1,4 @@
+[cliente][2026-11-14T18:00][Hola. Somos cuatro para comprar: mi mujer y yo, y mis padres, que vendrían a vivir con nosotros. Buscamos en Alicante y querríamos mudarnos en unos seis meses.]
+[libeen][2026-11-14T18:10][¡Hola, Andrés! ¿Cuánto ganáis al mes entre todos, qué deudas tenéis y cuánto tenéis ahorrado? ¿Y qué edades tenéis?]
+[cliente][2026-11-14T18:32][Yo gano 1.800 € netos, mi mujer 1.200 € netos, mi padre está jubilado con 900 € de pensión y mi madre no trabaja. Tenemos 40, 38, 68 y 66 años.]
+[cliente][2026-11-14T18:34][Pagamos 300 € al mes de un préstamo personal. Ahorrados tenemos 40.000 €.]

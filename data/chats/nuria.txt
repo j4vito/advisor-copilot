@@ -1,0 +1,3 @@
+[cliente][2026-11-15T10:30][Hola!\nSomos 2 [mi hermana y yo] y buscamos piso en Granada.\nIngresos: 2.800 € netos al mes entre las dos (después de deudas [no tenemos])]
+[libeen][2026-11-15T10:41][¡Hola, Nuria! Gracias. ¿Cuánto tenéis ahorrado para la entrada?]
+[cliente][2026-11-15T10:55][Ahorro: 16.000 € [en una cuenta a plazo fijo]]

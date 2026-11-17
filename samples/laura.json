@@ -1,0 +1,103 @@
+{
+  "_about": "One full example of every object in CONTRACTS.md, for the chat laura.txt. Build against this until the real pieces exist.",
+  "chat_file": [
+    "[cliente][2026-11-14T10:02][¡Hola! Hemos visto vuestro anuncio en Instagram. Somos mi pareja y yo, buscamos piso en Valencia para mudarnos antes del verano.]",
+    "[libeen][2026-11-14T10:05][¡Hola! Encantados. Para ver si encajáis, ¿cuánto ganáis al mes entre los dos, después de deudas, y cuánto tenéis ahorrado para la entrada?]",
+    "[cliente][2026-11-14T10:11][Unos 3.800 € netos entre los dos. Ahorrado tenemos 18.000 más o menos. Yo tengo 31 y él 34.]",
+    "[cliente][2026-11-14T10:12][Ah, y pagamos un préstamo del coche de 250 € al mes, no sé si cuenta.]"
+  ],
+  "extraction": {
+    "chat_id": "laura",
+    "fields": {
+      "zona": {"value": "Valencia", "status": "ok", "quotes": [{"msg": 0, "text": "Valencia"}], "note": ""},
+      "plazo": {"value": {"text": "antes del verano", "weeks": 30}, "status": "ok", "quotes": [{"msg": 0, "text": "antes del verano"}], "note": ""},
+      "compradores": {"value": 2, "status": "ok", "quotes": [{"msg": 0, "text": "mi pareja y yo"}], "note": ""},
+      "edad": {"value": [31, 34], "status": "ok", "quotes": [{"msg": 2, "text": "31"}, {"msg": 2, "text": "34"}], "note": ""},
+      "empleo": {"value": null, "status": "missing", "quotes": [], "note": ""},
+      "ingresos": {"value": {"min": 3800, "max": 3800}, "status": "ok", "quotes": [{"msg": 2, "text": "3.800 € netos"}], "note": ""},
+      "deudas": {"value": 250, "status": "ok", "quotes": [{"msg": 3, "text": "préstamo del coche de 250 € al mes"}], "note": ""},
+      "ahorro": {"value": 18000, "status": "ok", "quotes": [{"msg": 2, "text": "18.000"}], "note": ""}
+    },
+    "income_net_of_debts": "unknown",
+    "open_questions": [{"msg": 3, "text": "no sé si cuenta"}],
+    "attachments": [],
+    "special_requests": []
+  },
+  "analysis": {
+    "rows": [
+      {"key": "zona", "n": 1, "label": "Zona", "display": "Valencia", "status": "ok", "note": "", "group": null},
+      {"key": "plazo", "n": 2, "label": "Plazo", "display": "Antes del verano", "status": "ok", "note": "", "group": null},
+      {"key": "compradores", "n": 3, "label": "Compradores", "display": "2", "status": "ok", "note": "", "group": null},
+      {"key": "edad", "n": 4, "label": "Edad", "display": "31 y 34", "status": "ok", "note": "", "group": null},
+      {"key": "empleo", "n": 5, "label": "Empleo", "display": "", "status": "missing", "note": "", "group": null},
+      {"key": "ingresos", "n": 6, "label": "Ingresos declarados", "display": "3.800 € al mes", "status": "ok", "note": "", "group": "calc"},
+      {"key": "deudas", "n": 7, "label": "Deudas", "display": "250 € al mes", "status": "ok", "note": "", "group": "calc"},
+      {"key": "net_income", "n": null, "label": "Ingresos tras deudas", "display": "3.800 − 250 = 3.550 €", "status": "doubtful", "note": "Si ya lo descontó: 3.800. Encaja igual", "group": "calc"},
+      {"key": "ahorro", "n": 8, "label": "Ahorro", "display": "18.000 €", "status": "ok", "note": "Marca el límite de precio", "group": null}
+    ],
+    "counts": {"ok": 7, "doubtful": 1, "missing": 1, "fails": 0},
+    "alerts": {
+      "open_questions": [{"msg": 3, "text": "no sé si cuenta"}],
+      "attachments": [],
+      "special_requests": []
+    },
+    "simulation": {"max_price": 204500, "limited_by": "savings", "monthly_payment": 1317, "monthly_savings": 395, "price_end": 236700},
+    "fit": "fits",
+    "reply_kind": "offer",
+    "review": "normal",
+    "reasons": ["Cumple ingresos y ahorro", "Quiere mudarse antes del verano"],
+    "ask_for": [],
+    "client_reasons": [],
+    "facts": {
+      "field.ingresos": "3.800 €",
+      "field.deudas": "250 €",
+      "field.net_income": "3.550 €",
+      "field.ahorro": "18.000 €",
+      "sim.max_price": "204.500 €",
+      "sim.monthly_payment": "1.317 €",
+      "sim.monthly_savings": "395 €",
+      "sim.price_end": "236.700 €",
+      "sim.years": "3",
+      "rule.min_income": "2.200 €",
+      "rule.min_savings": "15.000 €",
+      "rule.min_weeks": "4"
+    }
+  },
+  "draft": {
+    "reply_kind": "offer",
+    "blocks": [
+      {"label": "Responde a su pregunta", "text": "¡Hola, Laura! Gracias por los datos. El préstamo del coche sí cuenta, pero en vuestro caso no cambia el resultado."},
+      {"label": "Oferta con simulación", "text": "Con lo que nos contáis, podríais optar a una casa de hasta unos 204.500 € en Valencia. La cuota sería de unos 1.317 € al mes y, de ahí, unos 395 € irían a vuestra entrada. Son números orientativos, no una oferta."},
+      {"label": "Siguiente paso", "text": "¿Os va bien una llamada esta semana para verlo con calma?"}
+    ],
+    "key_spans": [
+      {"block": 0, "text": "no cambia el resultado", "ref": "decision"},
+      {"block": 1, "text": "204.500 €", "ref": "sim.max_price"},
+      {"block": 1, "text": "1.317 €", "ref": "sim.monthly_payment"},
+      {"block": 1, "text": "395 €", "ref": "sim.monthly_savings"}
+    ]
+  },
+  "checks": [
+    {"name": "banned_words", "ok": true, "detail": ""},
+    {"name": "numbers_in_facts", "ok": true, "detail": ""},
+    {"name": "key_spans_valid", "ok": true, "detail": ""},
+    {"name": "offer_disclaimer", "ok": true, "detail": ""}
+  ],
+  "expected": {
+    "fields": {
+      "zona": {"status": "ok", "value": "Valencia"},
+      "plazo": {"status": "ok"},
+      "compradores": {"status": "ok", "value": 2},
+      "edad": {"status": "ok", "value": [31, 34]},
+      "empleo": {"status": "missing"},
+      "ingresos": {"status": "ok", "value": {"min": 3800, "max": 3800}},
+      "deudas": {"status": "ok", "value": 250},
+      "ahorro": {"status": "ok", "value": 18000}
+    },
+    "income_net_of_debts": "unknown",
+    "net_income_status": "doubtful",
+    "fit": "fits",
+    "reply_kind": "offer",
+    "review": "normal"
+  }
+}

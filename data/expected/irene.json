@@ -1,0 +1,34 @@
+{
+  "_note": "Trap: only asks for information, gives no data at all.",
+  "fields": {
+    "zona": {
+      "status": "missing"
+    },
+    "plazo": {
+      "status": "missing"
+    },
+    "compradores": {
+      "status": "missing"
+    },
+    "edad": {
+      "status": "missing"
+    },
+    "empleo": {
+      "status": "missing"
+    },
+    "ingresos": {
+      "status": "missing"
+    },
+    "deudas": {
+      "status": "missing"
+    },
+    "ahorro": {
+      "status": "missing"
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "missing",
+  "fit": "needs_data",
+  "reply_kind": "ask_info",
+  "review": "normal"
+}

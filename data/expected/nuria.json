@@ -1,0 +1,42 @@
+{
+  "_note": "Trap: line breaks and brackets inside messages. Brackets are not attachments.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Granada"
+    },
+    "plazo": {
+      "status": "missing"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 2
+    },
+    "edad": {
+      "status": "missing"
+    },
+    "empleo": {
+      "status": "missing"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 2800,
+        "max": 2800
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 16000
+    }
+  },
+  "income_net_of_debts": "yes",
+  "net_income_status": "ok",
+  "fit": "fits",
+  "reply_kind": "offer",
+  "review": "normal"
+}

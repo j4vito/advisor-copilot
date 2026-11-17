@@ -1,0 +1,4 @@
+[cliente][2026-11-14T19:05][Hola! Somos mi novia y yo, buscamos algo en Zaragoza para dentro de unos cinco meses. Entre los dos ganamos 2.500 € netos al mes.]
+[libeen][2026-11-14T19:12][¡Hola, Pablo! ¿Tenéis alguna deuda y cuánto tenéis ahorrado para la entrada? ¿Y qué edad tenéis?]
+[cliente][2026-11-14T19:30][Deudas ninguna. Ahorrados 25.000 €. Yo 33 y ella 30.]
+[cliente][2026-11-14T19:31][Bueno, para que lo tengáis claro: yo cobro 1.200 y ella 900, los dos netos.]

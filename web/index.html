@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Libeen · Asesor</title>
+<style>
+  :root {
+    --ink: #1c1d21; --muted: #5d6170; --line: #d9dbe1; --soft: #f4f5f7; --bg: #fff;
+    --ok: #1d6b3a; --doubt: #8a5a00; --miss: #4a4f5c; --fail: #a3201b;
+    /* one color per field, same order as the ficha */
+    --f1: #cfe3ff; --f2: #ffe1b8; --f3: #d9f2d0; --f4: #f1d6f5;
+    --f5: #fff3a8; --f6: #c9efec; --f7: #ffd3d3; --f8: #e2dcff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--soft); }
+  header { padding: 10px 16px; background: var(--bg); border-bottom: 1px solid var(--line); display: flex; gap: 12px; align-items: baseline; }
+  header h1 { font-size: 16px; margin: 0; }
+  header .mode { color: var(--fail); font-weight: 600; }
+  main { display: grid; grid-template-columns: 260px minmax(280px, 1fr) minmax(380px, 1.3fr); gap: 12px; padding: 12px; align-items: start; }
+  @media (max-width: 1000px) { main { grid-template-columns: 1fr; } }
+  section { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px; min-width: 0; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 8px; }
+  h3 { font-size: 14px; margin: 18px 0 6px; }
+  h3:first-child { margin-top: 0; }
+  .error { color: var(--fail); font-weight: 600; }
+
+  /* Inbox */
+  #inbox ul { list-style: none; margin: 0; padding: 0; }
+  #inbox button { width: 100%; text-align: left; background: none; border: 1px solid transparent; border-radius: 6px; padding: 8px; cursor: pointer; font: inherit; color: inherit; }
+  #inbox button:hover { background: var(--soft); }
+  #inbox button[aria-current="true"] { border-color: var(--ink); background: var(--soft); }
+  .inbox-top { display: flex; justify-content: space-between; gap: 6px; align-items: center; }
+  .inbox-name { font-weight: 600; }
+  .inbox-reasons { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .inbox-wait { color: var(--muted); font-size: 12px; }
+  .answered { opacity: .6; }
+  .fit { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 10px; white-space: nowrap; }
+  .fit-fits { background: var(--ok); color: #fff; }
+  .fit-needs_data { border: 1.5px dashed var(--doubt); color: var(--doubt); }
+  .fit-no_fit { background: var(--fail); color: #fff; }
+  .fit-error { border: 1.5px solid var(--fail); color: var(--fail); }
+  .fit-loading { color: var(--muted); font-weight: 400; font-style: italic; }
+  .marker { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin: 0 6px 8px 0; border: 1.5px solid var(--doubt); color: var(--doubt); }
+  .ask { font-size: 11px; color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 0 5px; margin-left: 6px; white-space: nowrap; }
+
+  /* Chat */
+  .msg { max-width: 88%; margin: 6px 0; padding: 6px 10px; border-radius: 8px; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .msg .meta { display: block; font-size: 11px; color: var(--muted); }
+  .msg.cliente { background: var(--soft); }
+  .msg.libeen { background: #e8f0e6; margin-left: auto; }
+  mark { border-radius: 3px; padding: 0 2px; color: inherit; }
+  mark sup, .badge { font-size: 10px; font-weight: 700; }
+  mark sup { margin-left: 2px; }
+  .f1 { background: var(--f1); } .f2 { background: var(--f2); } .f3 { background: var(--f3); } .f4 { background: var(--f4); }
+  .f5 { background: var(--f5); } .f6 { background: var(--f6); } .f7 { background: var(--f7); } .f8 { background: var(--f8); }
+
+  /* Ficha */
+  .counts { color: var(--muted); margin-bottom: 6px; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; }
+  th { text-align: left; font-size: 12px; color: var(--muted); font-weight: 600; padding: 4px 6px; border-bottom: 1px solid var(--line); }
+  td { padding: 5px 6px; vertical-align: top; border-bottom: 1px solid var(--soft); }
+  td.n { width: 30px; }
+  td.status { width: 104px; }
+  td.note { color: var(--muted); font-size: 12px; }
+  .badge { display: inline-block; min-width: 20px; text-align: center; border-radius: 10px; padding: 1px 5px; }
+  .nodata { color: var(--muted); font-style: italic; }
+  /* calc group: one thin light outline around the three rows */
+  tr.calc td { border-bottom-color: transparent; }
+  tr.calc td:first-child { border-left: 1px solid var(--line); }
+  tr.calc td:last-child { border-right: 1px solid var(--line); }
+  tr.calc-first td { border-top: 1px solid var(--line); }
+  tr.calc-last td { border-bottom: 1px solid var(--line); }
+  tr.calc-first td:first-child { border-top-left-radius: 6px; }
+  tr.calc-first td:last-child { border-top-right-radius: 6px; }
+  tr.calc-last td:first-child { border-bottom-left-radius: 6px; }
+  tr.calc-last td:last-child { border-bottom-right-radius: 6px; }
+
+  /* Status: shape and darkness differ, not only color */
+  .st { display: inline-block; font-size: 12px; font-weight: 700; padding: 1px 7px; border-radius: 4px; white-space: nowrap; }
+  .st-ok { color: var(--ok); border: 1.5px solid var(--ok); }
+  .st-doubtful { color: var(--doubt); border: 1.5px dashed var(--doubt); }
+  .st-missing { color: var(--miss); border: 1.5px dotted var(--miss); background: var(--soft); }
+  .st-fails { color: #fff; background: var(--fail); border: 1.5px solid var(--fail); }
+
+  /* Avisos + simulación */
+  dl.grid { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 0; }
+  dl.grid dt { color: var(--muted); }
+  dl.grid dd { margin: 0; }
+  .alert-on { font-weight: 600; }
+
+  /* Respuesta */
+  .kind { font-weight: 600; }
+  .review-full { color: var(--fail); font-weight: 700; }
+  .block { margin: 8px 0; }
+  .block-label { font-size: 12px; color: var(--muted); }
+  .block-text { white-space: pre-wrap; }
+  .span { border: 1.5px dotted var(--ink); border-radius: 6px; padding: 0 3px; }
+  textarea { width: 100%; min-height: 220px; font: inherit; padding: 8px; border: 1px solid var(--line); border-radius: 6px; }
+  .warn { border: 1.5px solid var(--fail); color: var(--fail); border-radius: 6px; padding: 6px 10px; margin: 10px 0; }
+  .warn ul { margin: 4px 0 0; padding-left: 18px; }
+  .actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+  .actions button { font: inherit; padding: 8px 14px; border-radius: 6px; cursor: pointer; border: 1px solid var(--ink); background: var(--bg); color: var(--ink); }
+  .actions button.primary { background: var(--ink); color: #fff; }
+  .actions button:disabled { opacity: .5; cursor: wait; }
+  .sent { color: var(--ok); font-weight: 600; margin-top: 8px; }
+</style>
+</head>
+<body>
+<header><h1>Libeen · Asesor</h1><span class="mode" id="mode"></span></header>
+<main>
+  <section id="inbox" aria-label="Bandeja"><h2>Bandeja</h2><ul id="inbox-list"></ul></section>
+  <section id="chat" aria-label="Chat"><h2>Chat</h2><div id="chat-body"><p class="nodata">Elige un chat.</p></div></section>
+  <section id="panel" aria-label="Decisión"><h2>Decisión</h2><div id="panel-body"></div></section>
+</main>
+
+<script>
+const STATUS = { ok: "OK", doubtful: "Dudoso", missing: "Falta", fails: "No cumple" };
+const STATUS_ICON = { ok: "●", doubtful: "◐", missing: "○", fails: "✕" };
+const FIT = { fits: "Encaja", needs_data: "Faltan datos", no_fit: "No encaja", error: "Error" };
+const KIND = { offer: "Informar de lo que podemos ofrecer", ask_info: "Pedir más información", decline: "Decir con cuidado que ahora no encaja" };
+const FIELD_KEYS = ["zona", "plazo", "compradores", "edad", "empleo", "ingresos", "deudas", "ahorro"];
+const SIM = [
+  ["max_price", "Precio máximo de casa"],
+  ["monthly_payment", "Cuota mensual"],
+  ["monthly_savings", "De la cuota, a la entrada"],
+  ["price_end", "Precio de compra al final"],
+];
+
+let current = null;   // chat_id
+let detail = null;    // last /api/chats response
+let editing = false;
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const euros = (n) => n == null ? null : Math.round(n).toLocaleString("es-ES", { useGrouping: "always" }) + " €";
+
+async function api(path, opts) {
+  const res = await fetch(path, opts);
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(body.detail || `Error ${res.status}`);
+  return body;
+}
+
+function waitText(min) {
+  if (min < 60) return `${min} min`;
+  if (min < 60 * 24) return `${Math.floor(min / 60)} h`;
+  return `${Math.floor(min / 60 / 24)} d`;
+}
+
+// ---- Inbox ----
+function inboxRow(it) {
+  const loading = it.fit == null;
+  const tag = loading ? `<span class="fit fit-loading">Leyendo…</span>` : `<span class="fit fit-${esc(it.fit)}">${esc(FIT[it.fit] || it.fit)}</span>`;
+  const reasons = it.reasons.join(" · ");
+  return `<button data-id="${esc(it.chat_id)}" aria-current="${it.chat_id === current}" class="${it.last_sender === "libeen" ? "answered" : ""}">
+        <div class="inbox-top"><span class="inbox-name">${esc(it.name)}</span>${tag}</div>
+        <div class="inbox-reasons" title="${esc(reasons)}">${esc(reasons) || "&nbsp;"}</div>
+        <div class="inbox-wait">${it.last_sender === "cliente" ? "Espera desde hace " + waitText(it.waiting_minutes) : it.last_sender ? "Respondido" : "&nbsp;"}</div>
+      </button>`;
+}
+
+function renderInbox(items) {
+  $("inbox-list").innerHTML = items.map((it) => `<li data-id="${esc(it.chat_id)}">${inboxRow(it)}</li>`).join("")
+    || `<li class="nodata">No hay chats.</li>`;
+  $("inbox-list").querySelectorAll("button").forEach((b) => b.onclick = () => openChat(b.dataset.id));
+}
+
+// The list comes first (no model call). Each row then fills in as its
+// extraction arrives, so a cold cache does not block the page. When all rows
+// are in, the server's order (inbox_sort) replaces the provisional one.
+async function loadInbox() {
+  try {
+    const items = await api("/api/inbox-list");
+    renderInbox(items);
+    const waiting = items.filter((it) => it.last_sender === "cliente");
+    const linked = items.find((it) => it.chat_id === decodeURIComponent(location.hash.slice(1)));  // #laura opens Laura
+    const first = (linked || waiting[0] || items[0])?.chat_id;
+    await Promise.all(items.filter((it) => it.fit !== "error").map(async (it) => {
+      let row;
+      try { row = await api(`/api/inbox/${encodeURIComponent(it.chat_id)}`); }
+      catch (e) { row = { ...it, fit: "error", reasons: [e.message] }; }
+      const li = $("inbox-list").querySelector(`li[data-id="${CSS.escape(it.chat_id)}"]`);
+      if (li) { li.innerHTML = inboxRow(row); li.querySelector("button").onclick = () => openChat(row.chat_id); }
+      if (!current && row.chat_id === first) openChat(first);  // after its extraction: no duplicate model call
+    }));
+    renderInbox(await api("/api/inbox"));  // everything is cached now, this is fast
+  } catch (e) {
+    $("inbox-list").innerHTML = `<li class="error">${esc(e.message)}</li>`;
+  }
+}
+
+// ---- Chat ----
+// Wrap each quote in its message with the color and number of its field.
+// Quotes not found, or overlapping an earlier one, are skipped.
+function highlight(text, marks) {
+  const ranges = [];
+  for (const m of marks) {
+    if (!m.text) continue;
+    let from = 0, at;
+    while ((at = text.indexOf(m.text, from)) !== -1) {
+      const end = at + m.text.length;
+      if (!ranges.some((r) => at < r.end && end > r.start)) { ranges.push({ start: at, end, n: m.n }); break; }
+      from = at + 1;
+    }
+  }
+  ranges.sort((a, b) => a.start - b.start);
+  let out = "", pos = 0;
+  for (const r of ranges) {
+    out += esc(text.slice(pos, r.start));
+    out += `<mark class="f${r.n}" title="${esc(labelFor(r.n))}">${esc(text.slice(r.start, r.end))}<sup>${r.n}</sup></mark>`;
+    pos = r.end;
+  }
+  return out + esc(text.slice(pos));
+}
+
+function labelFor(n) {
+  const row = detail?.analysis?.rows?.find((r) => r.n === n);
+  return row ? row.label : "";
+}
+
+function renderChat() {
+  const { chat, extraction } = detail;
+  const byMsg = {};
+  FIELD_KEYS.forEach((key, i) => {
+    for (const q of extraction.fields?.[key]?.quotes || []) (byMsg[q.msg] ||= []).push({ text: q.text, n: i + 1 });
+  });
+  const parts = [extraction, detail.draft].filter(Boolean);
+  const mock = (parts.some((x) => x.recorded) ? `<span class="marker" title="Respuesta real del modelo, guardada antes. No se ha llamado al modelo ahora.">Respuesta grabada</span>` : "")
+    + (parts.some((x) => x.mock || x.mock_placeholder) ? `<span class="marker" title="Respuesta fija de prueba, no del modelo.">Modo simulado</span>` : "");
+  $("chat-body").innerHTML = `<h3>${esc(chat.name)}</h3>` + mock + chat.messages.map((m) => `
+    <div class="msg ${esc(m.sender)}"><span class="meta">${m.sender === "cliente" ? "Cliente" : "Libeen"} · ${esc(String(m.ts).replace("T", " "))}</span>${highlight(m.text, byMsg[m.index] || [])}</div>`).join("");
+}
+
+// ---- Decision panel ----
+function statusCell(s) {
+  return `<span class="st st-${esc(s)}">${STATUS_ICON[s] || ""} ${esc(STATUS[s] || s)}</span>`;
+}
+
+function renderFicha(a) {
+  const c = a.counts;
+  const rows = a.rows;
+  const body = rows.map((r, i) => {
+    const calc = r.group === "calc";
+    const cls = calc ? ["calc",
+      rows[i - 1]?.group !== "calc" ? "calc-first" : "",
+      rows[i + 1]?.group !== "calc" ? "calc-last" : ""].join(" ") : "";
+    const badge = r.n == null ? `<span class="badge">=</span>` : `<span class="badge f${r.n}">${r.n}</span>`;
+    const value = r.display ? esc(r.display) : `<span class="nodata">Sin dato</span>`;
+    return `<tr class="${cls}"><td class="n">${badge}</td><td>${esc(r.label)}${detail.draft && (a.ask_for || []).includes(r.key) ? `<span class="ask">se pide</span>` : ""}</td><td>${value}</td><td class="status">${statusCell(r.status)}</td><td class="note">${esc(r.note)}</td></tr>`;
+  }).join("");
+  return `<h3>Ficha</h3>
+    <div class="counts">${c.ok} OK · ${c.doubtful} Dudoso · ${c.missing} Falta · ${c.fails} No cumple</div>
+    <table><thead><tr><th>#</th><th>Dato</th><th>Valor</th><th>Estado</th><th>Nota</th></tr></thead><tbody>${body}</tbody></table>`;
+}
+
+function renderAlerts(a) {
+  const al = a.alerts || {};
+  const line = (items, fmt) => items?.length
+    ? `<span class="alert-on">${items.map(fmt).map(esc).join(" · ")}</span>` : "Ninguno";
+  return `<h3>Avisos</h3><dl class="grid">
+    <dt>Preguntas sin responder</dt><dd>${line(al.open_questions, (q) => `«${q.text}» (mensaje ${q.msg + 1})`)}</dd>
+    <dt>Adjuntos sin leer</dt><dd>${line(al.attachments, (x) => `${x.label} (mensaje ${x.msg + 1})`)}</dd>
+    <dt>Peticiones especiales</dt><dd>${line(al.special_requests, (x) => `«${x.text}» (mensaje ${x.msg + 1})`)}</dd>
+  </dl>`;
+}
+
+function renderSim(a) {
+  const s = a.simulation;
+  const limited = s ? { savings: "el ahorro", income: "los ingresos" }[s.limited_by] || s.limited_by : null;
+  return `<h3>Simulación</h3><dl class="grid">${SIM.map(([k, label]) => {
+    const v = s ? euros(s[k]) : null;
+    const extra = k === "max_price" && limited ? ` <span class="nodata">(lo limita ${esc(limited)})</span>` : "";
+    return `<dt>${label}</dt><dd>${v ? esc(v) + extra : `<span class="nodata">Sin dato</span>`}</dd>`;
+  }).join("")}</dl>`;
+}
+
+// Put each key span inside a dotted box. Spans not found are skipped.
+function boxSpans(text, spans) {
+  const ranges = [];
+  for (const s of spans) {
+    const at = text.indexOf(s.text);
+    if (at === -1 || !s.text) continue;
+    const end = at + s.text.length;
+    if (!ranges.some((r) => at < r.end && end > r.start)) ranges.push({ start: at, end, ref: s.ref });
+  }
+  ranges.sort((a, b) => a.start - b.start);
+  let out = "", pos = 0;
+  for (const r of ranges) {
+    out += esc(text.slice(pos, r.start)) + `<span class="span" title="${esc(r.ref)}">${esc(text.slice(r.start, r.end))}</span>`;
+    pos = r.end;
+  }
+  return out + esc(text.slice(pos));
+}
+
+function draftText(d) {
+  return d.blocks.map((b) => b.text).join("\n\n");
+}
+
+// Why the advisor must read everything, in a few words, from what the analysis shows.
+function reviewWhy(a) {
+  const why = [];
+  const al = a.alerts || {};
+  if (a.fit === "no_fit") why.push("no encaja");
+  if (a.rows.some((r) => r.key === "edad" && r.status === "doubtful")) why.push("edad");
+  if (a.rows.some((r) => /^Casi llega/.test(r.note || ""))) why.push("casi llega al mínimo");
+  if (al.special_requests?.length) why.push("petición especial");
+  if (al.attachments?.length) why.push("adjunto sin leer");
+  return why;
+}
+
+function renderReply(a, d, checks) {
+  if (!d) return `<h3>Respuesta propuesta</h3><p class="nodata">Esperando respuesta del cliente.</p><div id="sent"></div>`;
+  const failed = (checks || []).filter((c) => !c.ok);
+  const blocks = editing
+    ? `<textarea id="edit" aria-label="Texto de la respuesta">${esc(draftText(d))}</textarea>`
+    : d.blocks.map((b, i) => `<div class="block"><div class="block-label">${esc(b.label)}</div>
+        <div class="block-text">${boxSpans(b.text, (d.key_spans || []).filter((s) => s.block === i))}</div></div>`).join("");
+  const warn = failed.length
+    ? `<div class="warn" role="alert">Revisa antes de enviar:<ul>${failed.map((c) => `<li>${esc(c.name)}${c.detail ? ": " + esc(c.detail) : ""}</li>`).join("")}</ul></div>` : "";
+  return `<h3>Respuesta propuesta</h3>
+    <div class="kind">${esc(KIND[d.reply_kind] || d.reply_kind)}</div>
+    <div>${a.review === "full" ? `<span class="review-full">Revisión: lectura completa${reviewWhy(a).map((w) => " · " + esc(w)).join("")}</span>` : "Revisión: normal"}</div>
+    ${blocks}${warn}
+    <div class="actions">
+      <button class="primary" id="approve">Aprobar y enviar</button>
+      <button id="toggle-edit">${editing ? "Volver a la propuesta" : "Editar texto"}</button>
+    </div><div id="sent"></div>`;
+}
+
+function renderPanel() {
+  const { analysis: a, draft: d, checks } = detail;
+  $("panel-body").innerHTML = renderFicha(a) + renderAlerts(a) + renderSim(a) + renderReply(a, d, checks);
+  if (!d) return;
+  $("approve").onclick = approve;
+  $("toggle-edit").onclick = () => { editing = !editing; renderPanel(); if (editing) $("edit").focus(); };
+}
+
+async function openChat(id) {
+  current = id; editing = false;
+  history.replaceState(null, "", "#" + encodeURIComponent(id));
+  document.querySelectorAll("#inbox-list button").forEach((b) => b.setAttribute("aria-current", b.dataset.id === id));
+  $("chat-body").innerHTML = `<p class="nodata">Cargando…</p>`;
+  $("panel-body").innerHTML = "";
+  try {
+    detail = await api(`/api/chats/${encodeURIComponent(id)}`);
+    renderChat(); renderPanel();
+  } catch (e) {
+    $("chat-body").innerHTML = `<p class="error">${esc(e.message)}</p>`;
+  }
+}
+
+async function approve() {
+  const original = draftText(detail.draft);
+  const text = editing ? $("edit").value : original;
+  const btn = $("approve");
+  btn.disabled = true;
+  try {
+    const res = await api(`/api/chats/${encodeURIComponent(current)}/approve`, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text, edited: text.trim() !== original.trim() }),
+    });
+    await openChat(current);
+    await loadInbox();
+    const failed = res.checks_failed || [];
+    $("sent").innerHTML = `<div class="sent">Enviado.</div>` + (failed.length
+      ? `<div class="warn" role="alert">El texto enviado no pasó: ${failed.map(esc).join(", ")}. Queda anotado en el registro.</div>` : "");
+  } catch (e) {
+    btn.disabled = false;
+    $("sent").innerHTML = `<p class="error">${esc(e.message)}</p>`;
+  }
+}
+
+api("/api/mode").then((m) => { if (m.mode === "sample") $("mode").textContent = "Modo muestra (samples/laura.json)"; }).catch(() => {});
+loadInbox();
+</script>
+</body>
+</html>

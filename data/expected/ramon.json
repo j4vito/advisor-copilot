@@ -1,0 +1,48 @@
+{
+  "_note": "Trap: client aged 63 who fits on income and savings. Offer, full review, age never in the reply (11.6).",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Córdoba"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 1
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        63
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 2900,
+        "max": 2900
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 45000
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "ok",
+  "fit": "fits",
+  "reply_kind": "offer",
+  "review": "full",
+  "must_not_contain": [
+    "edad"
+  ]
+}

@@ -1,0 +1,3 @@
+[cliente][2026-11-14T13:15][Hola, soy Diego, tengo 35 años y soy programador en Madrid. Compro solo y me gustaría mudarme en unos dos meses.]
+[libeen][2026-11-14T13:22][¡Hola, Diego! ¿Cuánto ganas al mes, después de deudas, y cuánto tienes ahorrado?]
+[cliente][2026-11-14T13:40][Cobro 2.600 € netos al mes y ya le he restado los 200 € del préstamo del coche. Ahorrados tengo 15.100 €.]

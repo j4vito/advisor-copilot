@@ -1,0 +1,39 @@
+{
+  "_note": "Vague income range, audio attachment, trust question. Debts and savings not given.",
+  "fields": {
+    "zona": {
+      "status": "ok"
+    },
+    "plazo": {
+      "status": "missing"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 1
+    },
+    "edad": {
+      "status": "missing"
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "doubtful",
+      "value": {
+        "min": 2000,
+        "max": 3000
+      }
+    },
+    "deudas": {
+      "status": "missing"
+    },
+    "ahorro": {
+      "status": "missing"
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "missing",
+  "fit": "needs_data",
+  "reply_kind": "ask_info",
+  "review": "full"
+}

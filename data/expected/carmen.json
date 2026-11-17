@@ -1,0 +1,41 @@
+{
+  "_note": "Trap: income given gross per year, not net per month. Must not be taken as net.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Sevilla"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 1
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        38
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "doubtful"
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 21000
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "doubtful",
+  "fit": "needs_data",
+  "reply_kind": "ask_info",
+  "review": "normal"
+}

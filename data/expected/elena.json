@@ -1,0 +1,49 @@
+{
+  "_note": "Trap: savings 14.900, a near miss on the 15.000 minimum (11.2): doubtful, not fails. The advisor decides.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Bilbao"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 2
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        29,
+        30
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 3000,
+        "max": 3000
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 14900
+    }
+  },
+  "income_net_of_debts": "yes",
+  "net_income_status": "ok",
+  "fit": "fits",
+  "reply_kind": "offer",
+  "review": "full",
+  "must_not_contain": [
+    "plazo"
+  ]
+}

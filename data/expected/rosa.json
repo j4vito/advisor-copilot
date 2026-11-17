@@ -1,0 +1,45 @@
+{
+  "_note": "Low income, no savings, two weeks to move, age above 60, asks rent only and written approval.",
+  "fields": {
+    "zona": {
+      "status": "missing"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 2
+    },
+    "edad": {
+      "status": "doubtful"
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 1400,
+        "max": 1400
+      }
+    },
+    "deudas": {
+      "status": "missing"
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 0
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "fails",
+  "fit": "no_fit",
+  "reply_kind": "decline",
+  "review": "full",
+  "must_not_contain": [
+    "zona",
+    "deudas",
+    "edad"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "_note": "Trap: four buyers, mixed incomes (1.800 + 1.200 + 900 pension + 0), two ages above 60, debts with unknown netting.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Alicante"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 4
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        40,
+        38,
+        68,
+        66
+      ]
+    },
+    "empleo": {
+      "status": "doubtful"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 3900,
+        "max": 3900
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 300
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 40000
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "doubtful",
+  "fit": "fits",
+  "reply_kind": "offer",
+  "review": "full",
+  "must_not_contain": [
+    "edad"
+  ]
+}

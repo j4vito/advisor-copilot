@@ -64,16 +64,15 @@ The logs are the honest record of what was accepted, corrected and why.
 
 ## Next rounds I had planned
 
-The work stopped after round 2 for the conversations, the rules and the model layer. These were the next steps, in order:
+All four agents finished round 2. These were the next steps, in order:
 
-1. **Screen, round 2** (`agents/round2/agent-4.md`, written but not run). No draft and no buttons when Libeen wrote last ("Esperando respuesta del cliente"). A visible "Respuesta grabada" or "Modo simulado" marker, so nobody mistakes a recorded answer for a live one. Load the inbox row by row ("Leyendo…") instead of blocking on a cold cache. Mark the rows the reply is about to ask for with a "se pide" tag, and say in a few words why a chat needs a full review.
-2. **Settle the open contract questions** the agents flagged in their logs, then align rules and expected files:
+1. **Settle the open contract questions** the agents flagged in their logs, then align rules and expected files:
    - A near miss on savings gets an offer with full review, but a near miss on income asks for data, because the offer rule only tightens income. I would make both "offer, full review, the advisor decides".
    - Clients who need more data still get a simulation, so a reply asking for income can see numbers built on an income below the minimum. I would only simulate when the client fits.
    - Debts mentioned but with no amount (Víctor) give a missing net income row; by analogy with gross income it should be doubtful.
    - Decide whether a reply asking for data asks for non-money fields (job, buyers) or only for what blocks the decision.
-3. **Stronger draft checks.** Check that an offer only mentions the allowed simulation numbers (`draft.offer_facts`, validated but not enforced yet), that the reply is in Spanish when the client writes in another language (Jordi), and that times and dates such as "1:12" are not read as invented numbers. Add the two new checks to `samples/laura.json`. Fix what the checks miss today: replies that use the internal label "ingresos declarados" (a client-facing wording per field in config), and small slips mixing "tú" and "vosotros".
-4. **More evals with the real model.** Run each chat several times to measure variance instead of two runs, and add every new failure from real use as a chat with its expected file before changing a prompt.
+2. **Stronger draft checks.** Check that an offer only mentions the allowed simulation numbers (`draft.offer_facts`, validated but not enforced yet), that the reply is in Spanish when the client writes in another language (Jordi), and that times and dates such as "1:12" are not read as invented numbers. Add the two new checks to `samples/laura.json`. Fix what the checks miss today: replies that use the internal label "ingresos declarados" (a client-facing wording per field in config), and small slips mixing "tú" and "vosotros".
+3. **More evals with the real model.** Run each chat several times to measure variance instead of two runs, and add every new failure from real use as a chat with its expected file before changing a prompt.
 
 ## With one more week
 

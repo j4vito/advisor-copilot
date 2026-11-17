@@ -11,8 +11,6 @@ __pycache__/
 # runtime files
 data/log.jsonl
 data/sample_chats/
-# model answers: agent 3 removes this line in round 2, once the cache holds the final answers
-data/cache/
 
 # not ours to publish: the test statement, the calculator screenshot, scratch files
 *.pdf

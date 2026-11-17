@@ -1,0 +1,102 @@
+{
+ "extraction": {
+  "key": "a0a9da0166bf3ce0",
+  "chat": "97830222b2691711",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "plazo": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "compradores": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "edad": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "empleo": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "ingresos": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "deudas": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "ahorro": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    }
+   },
+   "plazo_weeks": null,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [
+    {
+     "msg": 0,
+     "text": "¿cómo funciona exactamente lo del alquiler con opción a compra?"
+    },
+    {
+     "msg": 1,
+     "text": "¿Y en qué ciudades estáis?"
+    }
+   ],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "c3c8f232caa36ad0",
+  "chat": "97830222b2691711",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "ask_info",
+  "value": {
+   "blocks": [
+    {
+     "label": "Respuesta a tus preguntas",
+     "text": "Irene, Libeen compra la casa que tú eliges y te la alquila con opción a compra, con el precio de compra fijado por contrato desde el primer día. Operamos a través de una SOCIMI regulada por la CNMV. Sobre las ciudades, ahora mismo no lo tengo confirmado y prefiero no darte un dato equivocado."
+    },
+    {
+     "label": "Datos para orientarte",
+     "text": "Para orientarte, ¿nos podrías pasar tus ingresos declarados, tu ahorro y tus deudas?"
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Cuando nos lo envíes, lo revisamos contigo."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 1,
+     "text": "Para orientarte, ¿nos podrías pasar tus ingresos declarados, tu ahorro y tus deudas?",
+     "ref": "decision"
+    }
+   ]
+  }
+ }
+}

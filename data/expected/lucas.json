@@ -1,0 +1,47 @@
+{
+  "_note": "Trap: savings that are not cash: 5.000 in the bank, a car to sell and parents who will help. No usable savings figure.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Pamplona"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 1
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        33
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 2800,
+        "max": 2800
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "doubtful"
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "ok",
+  "fit": "needs_data",
+  "reply_kind": "ask_info",
+  "review": "normal",
+  "must_not_contain": [
+    "17.000"
+  ]
+}

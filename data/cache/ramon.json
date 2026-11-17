@@ -1,0 +1,146 @@
+{
+ "extraction": {
+  "key": "0136c02a3ad765e9",
+  "chat": "c245cf830c38e1a6",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Córdoba",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "trabajo como contable en Córdoba"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "en unos cuatro meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "en unos cuatro meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Compro solo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      63
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "tengo 63 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "contable",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "trabajo como contable en Córdoba"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2900,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Cobro 2.900 € netos al mes"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "no tengo deudas"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 45000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrados tengo 45.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 17,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "1dabedc1d74d2bda",
+  "chat": "c245cf830c38e1a6",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "offer",
+  "value": {
+   "blocks": [
+    {
+     "label": "Oferta orientativa",
+     "text": "Ramón, con los datos que nos has dado, podríamos ofrecerte una casa de hasta 180.000 € en Córdoba, con una cuota orientativa de 1.160 € al mes y un ahorro mensual de unos 348 €. Son números orientativos, no una oferta."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "¿Te va bien una llamada corta esta semana para repasarlo juntos? Lo que falte lo veremos en ella."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "podríamos ofrecerte una casa de hasta",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "180.000 €",
+     "ref": "sim.max_price"
+    },
+    {
+     "block": 0,
+     "text": "1.160 €",
+     "ref": "sim.monthly_payment"
+    },
+    {
+     "block": 0,
+     "text": "348 €",
+     "ref": "sim.monthly_savings"
+    }
+   ]
+  }
+ }
+}

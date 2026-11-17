@@ -1,0 +1,4 @@
+[cliente][2026-11-17T09:10][Hola, soy Jorge, tengo 29 años y trabajo de camarero en Salamanca. Compro solo y me gustaría mudarme dentro de unos cuatro meses.]
+[libeen][2026-11-17T09:18][¡Hola, Jorge! ¿Cuánto ganas al mes, después de deudas, y cuánto tienes ahorrado para la entrada?]
+[cliente][2026-11-17T09:30][Gano 2.600 € netos al mes, sin deudas. Ahorrados tengo 25.000 €.]
+[cliente][2026-11-17T09:34][Perdón, me he liado con las pagas extra: son 2.000 € netos al mes, no 2.600.]

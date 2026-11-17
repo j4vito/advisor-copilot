@@ -2,9 +2,13 @@
 
 The API key is only ever read here and handed to the Anthropic client.
 It is never logged, cached or put in a prompt.
+
+`live()` says whether a real model call may be made. When it is False, `extract` and
+`draft` use the recorded real answer for that chat (data/cache/), then the mock.
 """
 
 import os
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -43,3 +47,32 @@ def api_key() -> str | None:
 def model() -> str:
     _load_env_file()
     return os.environ.get("ANTHROPIC_MODEL") or DEFAULT_MODEL
+
+
+_warned_no_package = False
+
+
+def _package_available() -> bool:
+    try:
+        import anthropic  # noqa: F401
+    except ImportError:
+        return False
+    return True
+
+
+def live() -> bool:
+    """True when a real model call can be made: a key, no LIBEEN_MOCK, and the `anthropic` package.
+    A key without the package behaves like no key, and says so once on stderr."""
+    global _warned_no_package
+    if api_key() is None:
+        return False
+    if not _package_available():
+        if not _warned_no_package:
+            _warned_no_package = True
+            print(
+                "Aviso: hay API key pero el paquete `anthropic` no está instalado. "
+                "Se usan las respuestas grabadas (data/cache/) o el modo simulado.",
+                file=sys.stderr,
+            )
+        return False
+    return True

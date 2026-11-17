@@ -1,0 +1,4 @@
+[cliente][2026-11-17T12:05][Hola, soy Víctor, tengo 44 años y soy mecánico en Gijón. Compro solo y quiero mudarme en unos tres meses.]
+[libeen][2026-11-17T12:14][¡Hola, Víctor! ¿Cuánto ganas al mes, qué deudas tienes y cuánto tienes ahorrado para la entrada?]
+[cliente][2026-11-17T12:30][Gano 2.900 € netos al mes. Deudas, tengo algún préstamo, no recuerdo cuánto pago. Ahorrados tengo 30.000 €.]
+[cliente][2026-11-17T12:31][[documento] Ahí va la nómina y el recibo del préstamo.]

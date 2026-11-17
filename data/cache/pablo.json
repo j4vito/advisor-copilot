@@ -1,0 +1,131 @@
+{
+ "extraction": {
+  "key": "d46d199a6b9e542a",
+  "chat": "c5ccf7a4ab5b7133",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Zaragoza",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "buscamos algo en Zaragoza"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "dentro de unos cinco meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "dentro de unos cinco meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 2,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Somos mi novia y yo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      33,
+      30
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Yo 33 y ella 30."
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2100,
+     "status": "doubtful",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "2.500 € netos al mes"
+      },
+      {
+       "msg": 3,
+       "text": "yo cobro 1.200 y ella 900"
+      }
+     ],
+     "note": "Cifras distintas en dos mensajes."
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Deudas ninguna"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 25000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrados 25.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 21,
+   "ingresos_max": 2500,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "6101936773714378",
+  "chat": "c5ccf7a4ab5b7133",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "ask_info",
+  "value": {
+   "blocks": [
+    {
+     "label": "Datos que necesitamos",
+     "text": "Hola, Pablo. Para seguir con vuestro caso, ¿podéis confirmarnos vuestros ingresos netos mensuales entre los dos? Nos han llegado dos cifras distintas. Y también en qué trabaja cada uno."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Enviádnoslo por aquí cuando podáis y seguimos con el análisis."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "podéis confirmarnos vuestros ingresos netos mensuales entre los dos",
+     "ref": "decision"
+    }
+   ]
+  }
+ }
+}

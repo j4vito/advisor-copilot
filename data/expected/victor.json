@@ -1,0 +1,44 @@
+{
+  "_note": "Trap: debts only vague ('algún préstamo') with the details in a [documento] attachment.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Gijón"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 1
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        44
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 2900,
+        "max": 2900
+      }
+    },
+    "deudas": {
+      "status": "doubtful"
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 30000
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "doubtful",
+  "fit": "needs_data",
+  "reply_kind": "ask_info",
+  "review": "full"
+}

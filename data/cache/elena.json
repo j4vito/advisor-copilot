@@ -1,0 +1,147 @@
+{
+ "extraction": {
+  "key": "78d158dbde3af827",
+  "chat": "3030f1b1d07f0155",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Bilbao",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "queremos comprar en Bilbao"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "en unos seis meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "en unos seis meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 2,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Mi pareja y yo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      29,
+      30
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "(29 y 30 años)"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "indefinido (ambos)",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Los dos tenemos contrato indefinido"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 3000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "3.000 € netos al mes entre los dos"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "no tenemos ninguna deuda"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 14900,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrados tenemos 14.900 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 25,
+   "ingresos_max": null,
+   "income_net_of_debts": "yes",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "6948dda6287db53e",
+  "chat": "3030f1b1d07f0155",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "offer",
+  "value": {
+   "blocks": [
+    {
+     "label": "Oferta orientativa",
+     "text": "Hola, Elena. Con vuestros ingresos netos de 3.000 € al mes, podríais optar a una casa en Bilbao de hasta 169.300 €, con una cuota orientativa de 1.091 € al mes. Son números orientativos, no una oferta."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "¿Os viene bien una llamada corta para repasarlo juntos?"
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "3.000 €",
+     "ref": "field.net_income"
+    },
+    {
+     "block": 0,
+     "text": "podríais optar a una casa en Bilbao de hasta 169.300 €",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "169.300 €",
+     "ref": "sim.max_price"
+    },
+    {
+     "block": 0,
+     "text": "1.091 €",
+     "ref": "sim.monthly_payment"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,164 @@
+{
+ "extraction": {
+  "key": "cfa66d889c037c90",
+  "chat": "1922f0d9b81fc7fb",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Alicante",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Buscamos en Alicante"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "en unos seis meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "en unos seis meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 4,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Somos cuatro para comprar"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      40,
+      38,
+      68,
+      66
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Tenemos 40, 38, 68 y 66 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": [
+      "jubilado",
+      "no trabaja"
+     ],
+     "status": "doubtful",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "mi padre está jubilado"
+      },
+      {
+       "msg": 2,
+       "text": "mi madre no trabaja"
+      }
+     ],
+     "note": "Falta el empleo del cliente y su mujer"
+    },
+    "ingresos": {
+     "value": 3900,
+     "status": "doubtful",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Yo gano 1.800 € netos"
+      },
+      {
+       "msg": 2,
+       "text": "mi mujer 1.200 € netos"
+      },
+      {
+       "msg": 2,
+       "text": "mi padre está jubilado con 900 € de pensión"
+      }
+     ],
+     "note": "Suma de ingresos; pensión sin indicar si es neta"
+    },
+    "deudas": {
+     "value": 300,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 3,
+       "text": "Pagamos 300 € al mes"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 40000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 3,
+       "text": "Ahorrados tenemos 40.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 25,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "ebeb4ec244fdbefc",
+  "chat": "1922f0d9b81fc7fb",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "offer",
+  "value": {
+   "blocks": [
+    {
+     "label": "Oferta orientativa",
+     "text": "Hola, Andrés. Con lo que nos has contado, podríamos ofreceros una casa de hasta 223.500 €, con una cuota mensual de 1.440 € y un ahorro mensual de 432 €. Son números orientativos, no una oferta."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "¿Te parece si lo vemos en una llamada corta? Así repasamos juntos el resto de los datos."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "podríamos ofreceros",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "223.500 €",
+     "ref": "sim.max_price"
+    },
+    {
+     "block": 0,
+     "text": "1.440 €",
+     "ref": "sim.monthly_payment"
+    },
+    {
+     "block": 0,
+     "text": "432 €",
+     "ref": "sim.monthly_savings"
+    }
+   ]
+  }
+ }
+}

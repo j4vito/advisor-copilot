@@ -1,0 +1,131 @@
+{
+ "extraction": {
+  "key": "919521871b4ac6ec",
+  "chat": "81b0f4c753d01a2c",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Sevilla",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "enfermera fija en un hospital de Sevilla"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "en unos tres meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "en unos tres meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Me gustaría comprar sola."
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      38
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Tengo 38 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "enfermera fija",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "soy enfermera fija en un hospital de Sevilla"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": null,
+     "status": "doubtful",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Gano 34.000 € brutos al año"
+      }
+     ],
+     "note": "Ingresos brutos anuales, no netos mensuales"
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Deudas no tengo ninguna"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 21000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "ahorrados tengo 21.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 13,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "3c2628d58ec929f5",
+  "chat": "81b0f4c753d01a2c",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "ask_info",
+  "value": {
+   "blocks": [
+    {
+     "label": "Datos que necesitamos",
+     "text": "Hola, Carmen. Para seguir con tu caso, ¿cuánto cobras al mes en neto, es decir, después de impuestos y Seguridad Social?"
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Envíanos ese dato y seguimos con tu caso."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "¿cuánto cobras al mes en neto, es decir, después de impuestos y Seguridad Social?",
+     "ref": "decision"
+    }
+   ]
+  }
+ }
+}

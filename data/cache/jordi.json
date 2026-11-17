@@ -1,0 +1,160 @@
+{
+ "extraction": {
+  "key": "e172bd7a4ebace3f",
+  "chat": "f9c28a3a73fb77dd",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Barcelona",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "busquem pis a Barcelona"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "d'aquí a uns sis mesos",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "d'aquí a uns sis mesos"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 2,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "la meva parella i jo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      34,
+      36
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Tenim 34 i 36 anys"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": [
+      "indefinido",
+      "indefinido"
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "tots dos treballem amb contracte indefinit"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 4100,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Guanyem 4.100 € nets al mes"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "no tenim deutes"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 28000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Tenim 28.000 € estalviats"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 26,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "354f7a83a9a2866a",
+  "chat": "f9c28a3a73fb77dd",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "offer",
+  "value": {
+   "blocks": [
+    {
+     "label": "Oferta",
+     "text": "Jordi, con los datos que nos has dado (4.100 € netos al mes entre los dos, sin deudas y 28.000 € ahorrados) te podemos ofrecer un precio máximo orientativo de 254.500 €, con una cuota mensual de 1.639 € y un ahorro mensual de 492 €. Son números orientativos, no una oferta."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "¿Te parece si hablamos por teléfono unos minutos para repasarlo? Lo que quede pendiente lo vemos en esa llamada."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "4.100 €",
+     "ref": "field.net_income"
+    },
+    {
+     "block": 0,
+     "text": "28.000 €",
+     "ref": "field.ahorro"
+    },
+    {
+     "block": 0,
+     "text": "254.500 €",
+     "ref": "sim.max_price"
+    },
+    {
+     "block": 0,
+     "text": "1.639 €",
+     "ref": "sim.monthly_payment"
+    },
+    {
+     "block": 0,
+     "text": "492 €",
+     "ref": "sim.monthly_savings"
+    },
+    {
+     "block": 0,
+     "text": "Te podemos ofrecer",
+     "ref": "decision"
+    }
+   ]
+  }
+ }
+}

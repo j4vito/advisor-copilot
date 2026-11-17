@@ -1,0 +1,3 @@
+[cliente][2026-11-17T13:00][Hola! Som la meva parella i jo i busquem pis a Barcelona. Tenim 34 i 36 anys i tots dos treballem amb contracte indefinit.]
+[libeen][2026-11-17T13:09][¡Hola, Jordi! ¿Cuánto ganáis al mes entre los dos, después de deudas, y cuánto tenéis ahorrado para la entrada?]
+[cliente][2026-11-17T13:25][Guanyem 4.100 € nets al mes entre tots dos, i no tenim deutes. Tenim 28.000 € estalviats. Voldríem mudar-nos d'aquí a uns sis mesos.]

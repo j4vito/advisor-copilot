@@ -5,9 +5,11 @@ import pytest
 
 from app.llm import draft, extract, mock, schemas, settings
 from app.llm.extract import NO_QUOTE_NOTE, check_field, find_attachments
+from app.rules import load_config
 from evals.samples import chat_from_lines, load_sample
 
 SAMPLE = load_sample()
+CONFIG = load_config()
 
 
 def laura():
@@ -164,11 +166,11 @@ def test_api_key_never_reaches_cache(fake_model):
 def test_real_draft_takes_reply_kind_from_analysis(fake_model):
     fake_model.answers["draft"] = {k: SAMPLE["draft"][k] for k in ("blocks", "key_spans")}
     analysis = dict(SAMPLE["analysis"], reply_kind="offer")
-    out = draft(laura(), analysis, {"draft": {"banned_words": ["aprobado"], "max_chars": 900}})
+    out = draft(laura(), analysis, CONFIG)
     assert out == SAMPLE["draft"]
     call = fake_model.calls[0]
     assert '"aprobado"' in call["system"]
-    assert "204.500 €" in call["user"]  # facts are passed in
+    assert "204.500 €" in call["user"]  # offer facts are passed in
 
 
 def test_schemas_are_strict():

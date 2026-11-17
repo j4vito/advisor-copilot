@@ -1,4 +1,4 @@
-"""draft(chat, analysis, config) -> Draft (CONTRACTS section 6)."""
+"""draft(chat, analysis, config) -> Draft (CONTRACTS sections 6 and 11.8)."""
 
 from app.llm import cache, client, mock, prompts, schemas, settings
 
@@ -6,19 +6,26 @@ from app.llm import cache, client, mock, prompts, schemas, settings
 def draft(chat, analysis: dict, config: dict) -> dict:
     chat_id, name, messages = cache.chat_parts(chat)
     reply_kind = analysis["reply_kind"]
+    chat_hash = cache.chat_hash(messages)
 
-    if settings.api_key() is None:
-        return mock.draft(chat_id, reply_kind)
+    if settings.live():
+        system = prompts.draft_system(config)
+        user = prompts.draft_user(name, messages, analysis, config)
+        key = cache.digest(settings.model(), system, user)
+        raw = cache.load(chat_id, "draft", key)
+        if raw is None:
+            raw = client.call_model(system, user, schemas.DRAFT, max_tokens=16000)
+            cache.save(chat_id, "draft", key, raw, chat=chat_hash, reply_kind=reply_kind)
+        return _finish(raw, reply_kind)
 
-    system = prompts.draft_system(config)
-    key = cache.digest(settings.model(), system, messages, analysis, config)
-    raw = cache.load(chat_id, "draft", key)
-    if raw is None:
-        raw = client.call_model(
-            system, prompts.draft_user(name, messages, analysis, config), schemas.DRAFT, max_tokens=16000
-        )
-        cache.save(chat_id, "draft", key, raw)
+    # No model call possible: a recorded real answer for this chat and kind, else the mock.
+    raw = cache.load_recorded(chat_id, "draft", chat_hash, reply_kind)
+    if raw is not None:
+        return dict(_finish(raw, reply_kind), recorded=True)
+    return mock.draft(chat_id, reply_kind)
 
+
+def _finish(raw: dict, reply_kind: str) -> dict:
     # The kind always comes from the rules, whatever the model wrote.
     blocks = raw["blocks"]
     return {"reply_kind": reply_kind, "blocks": blocks, "key_spans": fix_span_blocks(raw["key_spans"], blocks)}

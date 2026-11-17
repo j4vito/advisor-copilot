@@ -13,19 +13,23 @@ _ATTACHMENT_LABEL = {"audio": "Audio", "imagen": "Imagen", "documento": "Documen
 
 def extract(chat) -> dict:
     chat_id, name, messages = cache.chat_parts(chat)
+    chat_hash = cache.chat_hash(messages)
 
-    if settings.api_key() is None:
-        raw = mock.extraction(chat_id)
-    else:
+    if settings.live():
         key = cache.digest(settings.model(), prompts.EXTRACT_SYSTEM, messages)
         raw = cache.load(chat_id, "extraction", key)
         if raw is None:
             raw = client.call_model(
                 prompts.EXTRACT_SYSTEM, prompts.extract_user(name, messages), schemas.EXTRACTION, max_tokens=16000
             )
-            cache.save(chat_id, "extraction", key, raw)
+            cache.save(chat_id, "extraction", key, raw, chat=chat_hash)
+        return finish(chat_id, raw, messages)
 
-    return finish(chat_id, raw, messages)
+    # No model call possible: a recorded real answer for this exact chat, else the mock.
+    raw = cache.load_recorded(chat_id, "extraction", chat_hash)
+    if raw is not None:
+        return dict(finish(chat_id, raw, messages), recorded=True)
+    return finish(chat_id, mock.extraction(chat_id), messages)
 
 
 def finish(chat_id: str, raw: dict, messages: list[dict]) -> dict:

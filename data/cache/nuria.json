@@ -1,0 +1,129 @@
+{
+ "extraction": {
+  "key": "9f401bee494ba8cd",
+  "chat": "9dfe30f40389ac84",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Granada",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Granada"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "compradores": {
+     "value": 2,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Somos 2"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "empleo": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2800,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "2.800 € netos al mes"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "no tenemos"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 16000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorro: 16.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": null,
+   "ingresos_max": null,
+   "income_net_of_debts": "yes",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "4d29df6b8a81017c",
+  "chat": "9dfe30f40389ac84",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "offer",
+  "value": {
+   "blocks": [
+    {
+     "label": "Propuesta",
+     "text": "¡Hola, Nuria! Con los datos que nos habéis dado, podemos ofreceros una casa de hasta 173.800 €, con una cuota orientativa de 1.120 € al mes y un ahorro mensual de 336 €. Son números orientativos, no una oferta."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "¿Os viene bien una llamada corta esta semana para repasarlo juntos?"
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "Podemos ofreceros",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "173.800 €",
+     "ref": "sim.max_price"
+    },
+    {
+     "block": 0,
+     "text": "1.120 €",
+     "ref": "sim.monthly_payment"
+    },
+    {
+     "block": 0,
+     "text": "336 €",
+     "ref": "sim.monthly_savings"
+    }
+   ]
+  }
+ }
+}

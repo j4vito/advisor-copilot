@@ -1,0 +1,46 @@
+{
+  "_note": "Trap: declared income is fine (2.500) but it is before debts (500): net 2.000 fails.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Oviedo"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 2
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        35,
+        37
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 2500,
+        "max": 2500
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 500
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 20000
+    }
+  },
+  "income_net_of_debts": "no",
+  "net_income_status": "fails",
+  "fit": "no_fit",
+  "reply_kind": "decline",
+  "review": "full"
+}

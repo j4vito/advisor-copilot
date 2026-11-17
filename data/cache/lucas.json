@@ -1,0 +1,139 @@
+{
+ "extraction": {
+  "key": "67806a83a1814b4f",
+  "chat": "e7091973dce5d247",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Pamplona",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "soy técnico de laboratorio en Pamplona"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "en unos cinco meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "en unos cinco meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Compro solo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      33
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "tengo 33 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "técnico de laboratorio",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "soy técnico de laboratorio en Pamplona"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2800,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Gano 2.800 € netos al mes"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "no tengo deudas"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": null,
+     "status": "doubtful",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "En el banco tengo 5.000 €"
+      },
+      {
+       "msg": 2,
+       "text": "un coche que vale unos 12.000 € que vendería"
+      },
+      {
+       "msg": 2,
+       "text": "mis padres me ayudarán con lo que falte"
+      }
+     ],
+     "note": "Incluye coche por vender y ayuda familiar"
+    }
+   },
+   "plazo_weeks": 21,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "1a75c0225651c372",
+  "chat": "e7091973dce5d247",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "ask_info",
+  "value": {
+   "blocks": [
+    {
+     "label": "Ahorro",
+     "text": "Hola, Lucas. Para seguir con tu caso, ¿cuánto dinero tienes ahorrado y disponible para la entrada? Sepáralo por favor: lo que hay en el banco, lo que esperas sacar del coche y la ayuda de tus padres, si la hay."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Cuando nos lo envíes, seguimos con el análisis."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "¿cuánto dinero tienes ahorrado y disponible para la entrada?",
+     "ref": "decision"
+    }
+   ]
+  }
+ }
+}

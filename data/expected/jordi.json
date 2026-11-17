@@ -1,0 +1,46 @@
+{
+  "_note": "Trap: the client writes in Catalan. Same data as a Spanish chat; the reply stays in Spanish.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Barcelona"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 2
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        34,
+        36
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 4100,
+        "max": 4100
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 28000
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "ok",
+  "fit": "fits",
+  "reply_kind": "offer",
+  "review": "normal"
+}

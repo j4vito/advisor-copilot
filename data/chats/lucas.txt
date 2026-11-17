@@ -1,0 +1,3 @@
+[cliente][2026-11-17T10:00][Hola, soy Lucas. Compro solo, tengo 33 años y soy técnico de laboratorio en Pamplona. Me gustaría mudarme en unos cinco meses.]
+[libeen][2026-11-17T10:07][¡Hola, Lucas! ¿Cuánto ganas al mes, después de deudas, y cuánto tienes ahorrado para la entrada?]
+[cliente][2026-11-17T10:21][Gano 2.800 € netos al mes y no tengo deudas. En el banco tengo 5.000 €, y tengo un coche que vale unos 12.000 € que vendería. Además, mis padres me ayudarán con lo que falte.]

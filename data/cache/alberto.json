@@ -1,0 +1,136 @@
+{
+ "extraction": {
+  "key": "8f39c75a8f1b9007",
+  "chat": "ebbc330fdbd0657a",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Murcia",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "administrativo en Murcia"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "en unos tres meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "en unos tres meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Compro solo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      41
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Tengo 41 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "administrativo",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "soy administrativo"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2150,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "2.150 € netos al mes"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "aunque no tengo ninguna"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 20000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrados tengo 20.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 13,
+   "ingresos_max": null,
+   "income_net_of_debts": "yes",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "7fb6e3f165328d60",
+  "chat": "ebbc330fdbd0657a",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "ask_info",
+  "value": {
+   "blocks": [
+    {
+     "label": "Datos",
+     "text": "Hola, Alberto. Para seguir con tu caso, ¿nos confirmas tus ingresos declarados al mes? Hasta ahora nos has indicado 2.150 €."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Envíanos esos datos por aquí y seguimos con el análisis."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "¿nos confirmas tus ingresos declarados al mes?",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "2.150 €",
+     "ref": "field.ingresos"
+    }
+   ]
+  }
+ }
+}

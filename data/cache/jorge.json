@@ -1,0 +1,141 @@
+{
+ "extraction": {
+  "key": "e26815e881a7e1d0",
+  "chat": "e9380dfcdea5bb37",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Salamanca",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "trabajo de camarero en Salamanca"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "dentro de unos cuatro meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "me gustaría mudarme dentro de unos cuatro meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Compro solo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      29
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "tengo 29 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "camarero",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "trabajo de camarero en Salamanca"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 3,
+       "text": "son 2.000 € netos al mes, no 2.600"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "sin deudas"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 25000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrados tengo 25.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 17,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "544c04718f6e9504",
+  "chat": "e9380dfcdea5bb37",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "decline",
+  "value": {
+   "blocks": [
+    {
+     "label": "Mensaje principal",
+     "text": "Hola, Jorge. Gracias por contarnos tu situación y por la corrección. Ahora mismo no podemos ofrecerte una casa. Tras pagar deudas, con unos ingresos netos de 2.000 € al mes quedas por debajo del mínimo de 2.200 €. Para volver a estudiarlo, tendrían que subir tus ingresos netos hasta ese mínimo."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Si tu situación cambia, puedes escribirnos de nuevo cuando quieras."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "Ahora mismo no podemos ofrecerte una casa.",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "2.000 €",
+     "ref": "field.net_income"
+    },
+    {
+     "block": 0,
+     "text": "2.200 €",
+     "ref": "rule.min_income"
+    }
+   ]
+  }
+ }
+}

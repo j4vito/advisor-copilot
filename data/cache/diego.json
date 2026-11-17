@@ -1,0 +1,146 @@
+{
+ "extraction": {
+  "key": "c4976e328cf4be9a",
+  "chat": "9b9804ab9f5c9f25",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Madrid",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "soy programador en Madrid"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "en unos dos meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "en unos dos meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Compro solo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      35
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "tengo 35 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "programador",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "soy programador en Madrid"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2600,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Cobro 2.600 € netos al mes"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 200,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "los 200 € del préstamo del coche"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 15100,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrados tengo 15.100 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 8,
+   "ingresos_max": null,
+   "income_net_of_debts": "yes",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "42684a737f505d9f",
+  "chat": "9b9804ab9f5c9f25",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "offer",
+  "value": {
+   "blocks": [
+    {
+     "label": "Oferta",
+     "text": "Hola, Diego. Con lo que nos has contado, podemos ofrecerte una casa de hasta 161.400 €, con una cuota de 1.040 € al mes y un ahorro mensual de 312 €. Son números orientativos, no una oferta."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "¿Te va bien una llamada corta esta semana para repasarlo juntos?"
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "podemos ofrecerte una casa",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "161.400 €",
+     "ref": "sim.max_price"
+    },
+    {
+     "block": 0,
+     "text": "1.040 €",
+     "ref": "sim.monthly_payment"
+    },
+    {
+     "block": 0,
+     "text": "312 €",
+     "ref": "sim.monthly_savings"
+    }
+   ]
+  }
+ }
+}

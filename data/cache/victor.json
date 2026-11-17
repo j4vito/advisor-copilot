@@ -1,0 +1,131 @@
+{
+ "extraction": {
+  "key": "eb8d245786a64a37",
+  "chat": "08648fcf124bd0a7",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Gijón",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Gijón"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "en unos tres meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "en unos tres meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Compro solo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      44
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "tengo 44 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "mecánico",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "soy mecánico en Gijón"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2900,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Gano 2.900 € netos al mes"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": null,
+     "status": "doubtful",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "tengo algún préstamo, no recuerdo cuánto pago"
+      }
+     ],
+     "note": "Importe no indicado"
+    },
+    "ahorro": {
+     "value": 30000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrados tengo 30.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 13,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "1435b28aa495a6fe",
+  "chat": "08648fcf124bd0a7",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "ask_info",
+  "value": {
+   "blocks": [
+    {
+     "label": "Pregunta",
+     "text": "¡Hola, Víctor! Gracias por los datos. ¿Cuánto pagas al mes en tus deudas o préstamos?"
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Cuando nos lo confirmes, seguimos con tu caso."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "¿Cuánto pagas al mes en tus deudas o préstamos?",
+     "ref": "decision"
+    }
+   ]
+  }
+ }
+}

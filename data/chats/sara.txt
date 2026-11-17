@@ -1,0 +1,3 @@
+[cliente][2026-11-17T11:15][Buenas. Somos mi marido y yo, buscamos piso en Oviedo para dentro de unos seis meses. Tenemos 35 y 37 años y los dos tenemos contrato indefinido.]
+[libeen][2026-11-17T11:22][¡Hola, Sara! ¿Cuánto ganáis al mes entre los dos, después de deudas, y cuánto tenéis ahorrado para la entrada?]
+[cliente][2026-11-17T11:40][Ganamos 2.500 € netos al mes entre los dos, pero eso es antes de pagar las deudas: 500 € al mes entre el préstamo del coche y una tarjeta. Ahorrados tenemos 20.000 €.]

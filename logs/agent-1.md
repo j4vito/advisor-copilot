@@ -71,3 +71,21 @@ Open doubt: for alberto, the contract's path from a near miss on income goes to 
 ## 2026-11-16 Tests and cross-check
 Did: the tests now cover `below()`, the new `net_status` cases (2.134 is near, 2.133 fails), that `near_miss_pct` is read from the config, and that age above 60 means full review and `must_not_contain` in generated chats. For every data chat they also check: age above 60 means full review and `edad` in `must_not_contain`, `no_draft` is set exactly when Libeen wrote last, and there are no unknown keys. Result: 36 passed.
 Cross-check (read only, in scratch, nothing written): I fed a stand-in extraction built from each expected file into Agent 2's `analyze`. Nine chats match. Six differ, all in the round 2 rules Agent 2 is still adding: near miss (alberto, elena), age means full review (andres, ramon), and income doubtful with no value (carmen, pablo, where the stand-in had no value). To recheck once `app/rules` is finished.
+
+# Round 3 (2026-11-17)
+
+## 2026-11-17 Five new hard cases
+Asked: five more chats, one trap each, not already covered by the 15 existing ones.
+Did: chose five of the coordinator's suggestions. All people and data are invented.
+- `jorge`: corrects his income later ("son 2.000, no 2.600"). The corrected value is unambiguous, so `ingresos` is ok at 2.000. Net 2.000 is below 2.134, so it fails rather than being a near miss. Result `no_fit/decline/full`, `must_not_contain: ["2.600"]` (a decline must not cite the old figure).
+- `lucas`: savings that are not cash (5.000 in the bank, a 12.000 car to sell, parents who "will help"). `ahorro` is doubtful with no value, so the result is `needs_data/ask_info/normal`. `must_not_contain: ["17.000"]` catches a reply that adds the car to the cash.
+- `sara`: declares 2.500, then says it is before 500 of debts. So `income_net_of_debts` is `no`, net is 2.000 and fails. Result `no_fit/decline/full`.
+- `victor`: debts are only "algún préstamo" plus a `[documento]` attachment. `deudas` is doubtful with no value, the net row is doubtful, and the result is `needs_data/ask_info/full` (full because of the attachment).
+- `jordi`: the client writes in Catalan. The data is clear: 4.100 net, no debts, 28.000 savings. Result `fits/offer/normal`. The reply should stay in Spanish, but `must_not_contain` cannot express that.
+Did not change the text of any existing chat or expected file. A sha1 check over all 15 chats and 15 expected files before and after showed no change, so the recorded answers stay valid.
+
+## 2026-11-17 Tests and cross-check
+Tests: 41 passed (the parametrized data test covers the five new chats).
+Cross-check: stand-in extraction from each expected file fed to `app/rules` `analyze` (read only, in scratch). 19 of 20 match on net row, fit, reply_kind and review, including all round 2 cases that differed last time.
+Mismatch: victor. The net row is `missing` in `analyze`, `doubtful` in my file. `analyze` treats debts with no value as missing even when `deudas` is `doubtful` (the client said there is a loan). Section 5 only covers debts that are *missing*. By analogy with 11.3 (income doubtful with no value means a doubtful net row), I kept `doubtful`. I reported this to the coordinator as a possible rules gap and did not change `app/rules`. fit, reply_kind and review agree either way.
+Note: the scratch cross-check script was rewritten while I worked (not by me, same logic: STAND values, every attachment kind). I used it as found and read it before trusting the output.

@@ -1,12 +1,16 @@
-"""python -m evals.run [--mock] [--fresh] [chat_id ...]
+"""python -m evals.run [--mock] [--fresh] [--jobs N] [chat_id ...]
 
 Runs `extract` on every chat and compares with its expected file. If `app.rules` exists,
-also runs `analyze`, `draft` and `check_draft`. Exit code 1 if anything fails.
+also runs `analyze`, `draft` and `check_draft`, checks `must_not_contain` against the reply,
+and makes no draft when the expected file says `no_draft`. Exit code 1 if anything fails.
+
+With a key it calls the model (answers cached in data/cache/). Without one it uses the
+recorded real answers in data/cache/, then the mock.
 """
 
 import argparse
-import shutil
 import sys
+from concurrent.futures import ThreadPoolExecutor
 import unicodedata
 from collections import Counter
 
@@ -44,6 +48,8 @@ class Case:
         self.total = Counter()  # category -> checked
         self.failures = []
         self.skipped = ""
+        self.recorded = False
+        self.note = ""
 
     def check(self, category, label, expected, got, ok=None):
         self.total[category] += 1
@@ -63,6 +69,9 @@ CATEGORIES = [
     ("reply_kind", "reply_kind"),
     ("review", "review"),
     ("checks", "Draft checks"),
+    ("max_chars", "max_chars"),
+    ("must_not_contain", "must_not_contain"),
+    ("no_draft", "no_draft"),
 ]
 
 
@@ -71,6 +80,7 @@ def run_case(chat, expected, rules) -> Case:
 
     extraction = extract(chat)
     case = Case(extraction["chat_id"])
+    case.recorded = bool(extraction.get("recorded"))
     if extraction.get("mock_placeholder"):
         case.skipped = "modo simulado, sin respuesta fija para este chat"
         return case
@@ -101,11 +111,26 @@ def run_case(chat, expected, rules) -> Case:
         if label in expected:
             case.check(category, label, expected[label], got)
 
+    messages = chat["messages"] if isinstance(chat, dict) else chat.messages
+    last = messages[-1] if messages else None
+    last_sender = (last["sender"] if isinstance(last, dict) else getattr(last, "sender", None)) if last else None
+    if expected.get("no_draft"):
+        # CONTRACTS 11.9: libeen wrote last, nothing to answer, no draft call is spent.
+        case.check("no_draft", "no_draft (último mensaje de libeen)", "libeen", last_sender)
+        case.note = "sin borrador"
+        return case
+
     reply = draft(chat, analysis, config)
     if reply.get("mock_placeholder"):
         return case
     for check in check_draft(reply, analysis, config):
-        case.check("checks", f"check {check['name']}", "ok", check.get("detail") or "failed", ok=check["ok"])
+        category = "max_chars" if check["name"] == "max_chars" else "checks"
+        case.check(category, f"check {check['name']}", "ok", check.get("detail") or "failed", ok=check["ok"])
+    text = "\n\n".join(b["text"] for b in reply["blocks"])
+    for word in expected.get("must_not_contain", []):
+        case.check("must_not_contain", f"must_not_contain «{word}»", "ausente", "aparece en el borrador",
+                   ok=word.lower() not in text.lower())
+    case.note = f"{reply['reply_kind']}, {len(text)} car."
     return case
 
 
@@ -120,41 +145,54 @@ def load_rules():
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("chat_ids", nargs="*", help="only these chats")
-    parser.add_argument("--mock", action="store_true", help="force mock mode even with a key")
-    parser.add_argument("--fresh", action="store_true", help="delete data/cache first")
+    parser.add_argument("--mock", action="store_true", help="no model calls even with a key: recorded answers, then mock")
+    parser.add_argument("--fresh", action="store_true", help="with a key: ignore stored answers and call the model again")
+    parser.add_argument("--jobs", type=int, default=4, help="chats in parallel (default 4)")
     args = parser.parse_args(argv)
 
     import os
 
-    from app.llm import settings
+    from app.llm import cache, settings
 
     if args.mock:
         os.environ["LIBEEN_MOCK"] = "1"
-    if args.fresh and settings.CACHE_DIR.exists():
-        shutil.rmtree(settings.CACHE_DIR)
+    live = settings.live()
+    if args.fresh and not live:
+        print("--fresh necesita API key: sin ella se borrarían las respuestas grabadas.", file=sys.stderr)
+        return 2
 
-    mode = f"modelo {settings.model()}" if settings.api_key() else "modo simulado (sin API key)"
+    mode = f"modelo {settings.model()}" if live else "sin API key: respuestas grabadas, si no modo simulado"
     source, cases = samples.cases()
     rules = load_rules()
     print(f"Evals: {source}, {mode}, reglas {'sí' if rules else 'no (app.rules no existe)'}\n")
 
-    results = []
-    for chat, expected in cases:
-        chat_id = chat["chat_id"] if isinstance(chat, dict) else chat.chat_id
-        if args.chat_ids and chat_id not in args.chat_ids:
-            continue
-        try:
-            case = run_case(chat, expected, rules)
-        except Exception as exc:  # one broken chat must not hide the others
-            case = Case(chat_id)
-            case.failures.append(f"error: {type(exc).__name__}: {exc}")
-        results.append(case)
+    def chat_id_of(chat):
+        return chat["chat_id"] if isinstance(chat, dict) else chat.chat_id
 
+    selected = [(c, e) for c, e in cases if not args.chat_ids or chat_id_of(c) in args.chat_ids]
+
+    def one(item):
+        chat, expected = item
+        if args.fresh:
+            cache.drop(chat_id_of(chat), "extraction")
+            cache.drop(chat_id_of(chat), "draft")
+        try:
+            return run_case(chat, expected, rules)
+        except Exception as exc:  # one broken chat must not hide the others
+            case = Case(chat_id_of(chat))
+            case.failures.append(f"error: {type(exc).__name__}: {exc}")
+            return case
+
+    with ThreadPoolExecutor(max_workers=max(1, args.jobs)) as pool:
+        results = list(pool.map(one, selected))
+
+    for case in results:
         if case.skipped:
             print(f"SKIP {case.chat_id:<14} {case.skipped}")
             continue
         passed, total = sum(case.tally.values()), sum(case.total.values())
-        print(f"{'PASS' if not case.failures else 'FAIL'} {case.chat_id:<14} {passed}/{total}")
+        extra = ", ".join(x for x in [case.note, "grabada" if case.recorded else ""] if x)
+        print(f"{'PASS' if not case.failures else 'FAIL'} {case.chat_id:<14} {passed}/{total}" + (f"  ({extra})" if extra else ""))
         for failure in case.failures:
             print(f"       - {failure}")
 

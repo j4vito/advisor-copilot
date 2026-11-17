@@ -1,0 +1,48 @@
+{
+  "_note": "Trap: corrects his income later (2.600 -> 2.000). The corrected value fails; the old one would fit.",
+  "fields": {
+    "zona": {
+      "status": "ok",
+      "value": "Salamanca"
+    },
+    "plazo": {
+      "status": "ok"
+    },
+    "compradores": {
+      "status": "ok",
+      "value": 1
+    },
+    "edad": {
+      "status": "ok",
+      "value": [
+        29
+      ]
+    },
+    "empleo": {
+      "status": "ok"
+    },
+    "ingresos": {
+      "status": "ok",
+      "value": {
+        "min": 2000,
+        "max": 2000
+      }
+    },
+    "deudas": {
+      "status": "ok",
+      "value": 0
+    },
+    "ahorro": {
+      "status": "ok",
+      "value": 25000
+    }
+  },
+  "income_net_of_debts": "unknown",
+  "net_income_status": "fails",
+  "fit": "no_fit",
+  "reply_kind": "decline",
+  "review": "full",
+  "must_not_contain": [
+    "2.600"
+  ]
+}

@@ -1,0 +1,193 @@
+{
+ "extraction": {
+  "key": "c7fff3ce57fd8bad",
+  "chat": "46248c77b56ab7cb",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "plazo": {
+     "value": "necesitamos salir del piso en dos semanas",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "necesitamos salir del piso en dos semanas"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 2,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Somos mi marido y yo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      67
+     ],
+     "status": "doubtful",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Él tiene 67 años"
+      }
+     ],
+     "note": "Falta una edad"
+    },
+    "empleo": {
+     "value": [
+      "jubilado",
+      "media jornada"
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "está jubilado"
+      },
+      {
+       "msg": 0,
+       "text": "yo trabajo a media jornada"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 1400,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Entre los dos, 1.400 €."
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Ahorros no tenemos"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 2,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [
+    {
+     "msg": 1,
+     "text": "¿nos alquiláis algo solo de alquiler?"
+    }
+   ],
+   "special_requests": [
+    {
+     "msg": 1,
+     "kind": "rent_only",
+     "text": "¿nos alquiláis algo solo de alquiler?"
+    },
+    {
+     "msg": 2,
+     "kind": "written_approval",
+     "text": "os pida por escrito que estamos aprobados antes de seguir"
+    }
+   ]
+  }
+ },
+ "draft": {
+  "key": "14c289f4fa7f40aa",
+  "chat": "46248c77b56ab7cb",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "decline",
+  "value": {
+   "blocks": [
+    {
+     "label": "Vuestras preguntas",
+     "text": "No ofrecemos alquiler sin opción a compra. Y no podemos confirmar nada por escrito antes del análisis completo."
+    },
+    {
+     "label": "Motivo",
+     "text": "Hola, Rosa. Ahora mismo no podemos ofreceros una casa. Con los datos de ahora, el plazo de 2 semanas es menos del mínimo de 4 semanas, los ingresos de 1.400 € están por debajo del mínimo de 2.200 € y el ahorro de 0 € no llega al mínimo de 15.000 €. Para poder estudiarlo de nuevo, haría falta un plazo de al menos 4 semanas, ingresos de al menos 2.200 € y un ahorro de al menos 15.000 €."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Si algo de esto cambia, podéis escribirnos de nuevo."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 1,
+     "text": "Ahora mismo no podemos ofreceros una casa",
+     "ref": "decision"
+    },
+    {
+     "block": 1,
+     "text": "2 semanas",
+     "ref": "field.plazo_weeks"
+    },
+    {
+     "block": 1,
+     "text": "4 semanas",
+     "ref": "rule.min_weeks"
+    },
+    {
+     "block": 1,
+     "text": "1.400 €",
+     "ref": "field.ingresos"
+    },
+    {
+     "block": 1,
+     "text": "2.200 €",
+     "ref": "rule.min_income"
+    },
+    {
+     "block": 1,
+     "text": "0 €",
+     "ref": "field.ahorro"
+    },
+    {
+     "block": 1,
+     "text": "15.000 €",
+     "ref": "rule.min_savings"
+    },
+    {
+     "block": 1,
+     "text": "4 semanas",
+     "ref": "rule.min_weeks"
+    },
+    {
+     "block": 1,
+     "text": "2.200 €",
+     "ref": "rule.min_income"
+    },
+    {
+     "block": 1,
+     "text": "15.000 €",
+     "ref": "rule.min_savings"
+    }
+   ]
+  }
+ }
+}

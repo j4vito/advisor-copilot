@@ -1,0 +1,145 @@
+{
+ "extraction": {
+  "key": "13ef562477718a78",
+  "chat": "21a0dbe65a0590fd",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Oviedo",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "buscamos piso en Oviedo"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "dentro de unos seis meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "dentro de unos seis meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 2,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Somos mi marido y yo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      35,
+      37
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Tenemos 35 y 37 años"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": [
+      "indefinido",
+      "indefinido"
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "los dos tenemos contrato indefinido"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2500,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ganamos 2.500 € netos al mes entre los dos"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 500,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "500 € al mes entre el préstamo del coche y una tarjeta"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 20000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrados tenemos 20.000 €"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 25,
+   "ingresos_max": null,
+   "income_net_of_debts": "no",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "2ab168b37f7ebf89",
+  "chat": "21a0dbe65a0590fd",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "decline",
+  "value": {
+   "blocks": [
+    {
+     "label": "Motivo",
+     "text": "Hola, Sara. Gracias por contarnos vuestra situación. Ahora mismo no podemos ofreceros una casa. Tras pagar las deudas, los ingresos netos que tenemos en cuenta son 2.000 €, y nuestro mínimo es 2.200 €. Para estudiarlo, tendríais que llegar a ese mínimo después de pagar las deudas."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Si cambia vuestra situación, podéis escribirnos de nuevo."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "no podemos ofreceros una casa",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "2.000 €",
+     "ref": "field.net_income"
+    },
+    {
+     "block": 0,
+     "text": "2.200 €",
+     "ref": "rule.min_income"
+    }
+   ]
+  }
+ }
+}

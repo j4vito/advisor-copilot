@@ -98,8 +98,8 @@ DRAFTS = {
         "reply_kind": "decline",
         "blocks": [
             {"label": "Responde a sus peticiones", "text": "Buenos días, Rosa. Gracias por contarnos vuestra situación. No ofrecemos alquiler sin opción a compra, y no podemos confirmar nada por escrito antes del análisis completo."},
-            {"label": "Explica por qué no encaja", "text": "Ahora mismo no podemos ofreceros una casa: pedimos unos ingresos de al menos 2.200 € al mes después de deudas, unos ahorros de 15.000 € para la entrada y unas 4 semanas para hacer la compra."},
-            {"label": "Siguiente paso", "text": "Si más adelante cambian vuestros ingresos o vuestros ahorros, escribidnos y lo volvemos a mirar con gusto."},
+            {"label": "Explica por qué no encaja", "text": "Ahora mismo no podemos ofreceros una casa: necesitamos unas 4 semanas para hacer la compra, unos ingresos de al menos 2.200 € al mes y unos ahorros de 15.000 € para la entrada."},
+            {"label": "Siguiente paso", "text": "Si más adelante cambian vuestro plazo, vuestros ingresos o vuestros ahorros, escribidnos y lo volvemos a mirar con gusto."},
         ],
         "key_spans": [
             {"block": 1, "text": "no podemos ofreceros una casa", "ref": "decision"},

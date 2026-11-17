@@ -1,0 +1,141 @@
+{
+ "extraction": {
+  "key": "eb8967cc2d1fe126",
+  "chat": "d9f2e71c5a939adc",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Valencia",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 1,
+       "text": "Busco en Valencia"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "unos seis meses",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 1,
+       "text": "Querría mudarme en unos seis meses"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Compro sola."
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      62
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 1,
+       "text": "Tengo 62 años."
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": "Trabaja en un taller",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 1,
+       "text": "Trabajo en un taller."
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 1800,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 1,
+       "text": "Gano 1.800 € netos al mes."
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 0,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 1,
+       "text": "No tengo deudas."
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 29500,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 1,
+       "text": "Tengo 29.500 € ahorrados."
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 26,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "9f2eded66cf81215",
+  "chat": "d9f2e71c5a939adc",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "decline",
+  "value": {
+   "blocks": [
+    {
+     "label": "Mensaje principal",
+     "text": "Hola Marta, gracias por escribirnos. Ahora mismo no podemos ofrecerte una casa. Con unos ingresos netos de 1.800 € al mes, estamos por debajo del mínimo de 2.200 €. Para valorarlo de nuevo, tus ingresos netos tendrían que llegar a ese mínimo."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Si tu situación cambia, puedes escribirnos de nuevo."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 0,
+     "text": "ahora mismo no podemos ofrecerte una casa",
+     "ref": "decision"
+    },
+    {
+     "block": 0,
+     "text": "1.800 €",
+     "ref": "field.net_income"
+    },
+    {
+     "block": 0,
+     "text": "2.200 €",
+     "ref": "rule.min_income"
+    }
+   ]
+  }
+ }
+}

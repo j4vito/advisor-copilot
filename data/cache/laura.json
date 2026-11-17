@@ -1,0 +1,151 @@
+{
+ "extraction": {
+  "key": "1e5dd01a7d246661",
+  "chat": "310667ffbb8b5112",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Valencia",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "buscamos piso en Valencia"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": "antes del verano",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "mudarnos antes del verano"
+      }
+     ],
+     "note": ""
+    },
+    "compradores": {
+     "value": 2,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "Somos mi pareja y yo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [
+      31,
+      34
+     ],
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Yo tengo 31 y él 34"
+      }
+     ],
+     "note": ""
+    },
+    "empleo": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 3800,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Unos 3.800 € netos entre los dos"
+      }
+     ],
+     "note": ""
+    },
+    "deudas": {
+     "value": 250,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 3,
+       "text": "pagamos un préstamo del coche de 250 € al mes"
+      }
+     ],
+     "note": ""
+    },
+    "ahorro": {
+     "value": 18000,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "Ahorrado tenemos 18.000 más o menos"
+      }
+     ],
+     "note": ""
+    }
+   },
+   "plazo_weeks": 31,
+   "ingresos_max": null,
+   "income_net_of_debts": "unknown",
+   "open_questions": [
+    {
+     "msg": 3,
+     "text": "no sé si cuenta"
+    }
+   ],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "c878f23ac5e17833",
+  "chat": "310667ffbb8b5112",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "offer",
+  "value": {
+   "blocks": [
+    {
+     "label": "Tu pregunta",
+     "text": "Laura, sobre el préstamo del coche: las deudas sí cuentan, miramos los ingresos netos después de pagarlas."
+    },
+    {
+     "label": "Oferta orientativa",
+     "text": "Con lo que me habéis contado, podríamos ofreceros una casa de hasta 204.500 €, con una cuota de 1.317 € al mes y un ahorro estimado de 395 € al mes. Son números orientativos, no una oferta."
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "¿Os viene bien una llamada corta esta semana para repasarlo juntos? Lo que falte lo vemos en la llamada."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 1,
+     "text": "podríamos ofreceros una casa de hasta",
+     "ref": "decision"
+    },
+    {
+     "block": 1,
+     "text": "204.500 €",
+     "ref": "sim.max_price"
+    },
+    {
+     "block": 1,
+     "text": "1.317 €",
+     "ref": "sim.monthly_payment"
+    },
+    {
+     "block": 1,
+     "text": "395 €",
+     "ref": "sim.monthly_savings"
+    }
+   ]
+  }
+ }
+}

@@ -1,6 +1,14 @@
-"""Results cached in `data/cache/<chat_id>.json`, keyed by a hash of the chat.
+"""Real model answers, stored in `data/cache/<chat_id>.json` (committed to the repo).
 
-Only real-model answers are cached; mock answers are free to recompute.
+Each file has an `extraction` and a `draft` slot:
+    {"key": ..., "chat": ..., "model": ..., "reply_kind": ..., "value": <raw model answer>}
+
+- `key` hashes everything the answer depends on (model id, prompt, chat, and for the draft
+  the analysis and config). With a key in the env, a matching `key` means no new call.
+- `chat` hashes only the chat content. With no key, a matching `chat` is enough: the answer
+  is used as a recorded real answer (CONTRACTS 11.10), whatever model or prompt made it.
+
+Only real-model answers are stored. The API key is never part of any of this.
 """
 
 import hashlib
@@ -26,11 +34,15 @@ def digest(*parts) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
 
 
+def chat_hash(messages: list[dict]) -> str:
+    return digest(messages)
+
+
 def _path(chat_id: str):
     return settings.CACHE_DIR / f"{chat_id}.json"
 
 
-def load(chat_id: str, slot: str, key: str):
+def _entry(chat_id: str, slot: str):
     path = _path(chat_id)
     if not path.exists():
         return None
@@ -38,12 +50,27 @@ def load(chat_id: str, slot: str, key: str):
         entry = json.loads(path.read_text(encoding="utf-8")).get(slot)
     except (json.JSONDecodeError, AttributeError):
         return None
-    if entry and entry.get("key") == key:
-        return entry["value"]
-    return None
+    return entry if isinstance(entry, dict) and "value" in entry else None
 
 
-def save(chat_id: str, slot: str, key: str, value) -> None:
+def load(chat_id: str, slot: str, key: str):
+    """The answer stored under exactly this key, or None."""
+    entry = _entry(chat_id, slot)
+    return entry["value"] if entry and entry.get("key") == key else None
+
+
+def load_recorded(chat_id: str, slot: str, chat: str, reply_kind: str | None = None):
+    """The recorded answer for this chat content, or None. For a draft, the reply kind
+    must match too: a recorded offer is no use when the rules now say decline."""
+    entry = _entry(chat_id, slot)
+    if not entry or entry.get("chat") != chat:
+        return None
+    if reply_kind is not None and entry.get("reply_kind") != reply_kind:
+        return None
+    return entry["value"]
+
+
+def save(chat_id: str, slot: str, key: str, value, chat: str, reply_kind: str | None = None) -> None:
     path = _path(chat_id)
     path.parent.mkdir(parents=True, exist_ok=True)
     data = {}
@@ -52,5 +79,22 @@ def save(chat_id: str, slot: str, key: str, value) -> None:
             data = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             data = {}
-    data[slot] = {"key": key, "value": value}
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    entry = {"key": key, "chat": chat, "model": settings.model()}
+    if reply_kind is not None:
+        entry["reply_kind"] = reply_kind
+    entry["value"] = value
+    data[slot] = entry
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
+def drop(chat_id: str, slot: str) -> None:
+    """Remove one slot (used when a chat no longer needs a draft)."""
+    path = _path(chat_id)
+    if not path.exists():
+        return
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return
+    if data.pop(slot, None) is not None:
+        path.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

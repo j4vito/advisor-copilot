@@ -1,0 +1,128 @@
+{
+ "extraction": {
+  "key": "4eda071374e79ca8",
+  "chat": "88da159eafad9310",
+  "model": "claude-haiku-5-5",
+  "value": {
+   "fields": {
+    "zona": {
+     "value": "Madrid y alrededores",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 0,
+       "text": "madrid o alrededores"
+      }
+     ],
+     "note": ""
+    },
+    "plazo": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "compradores": {
+     "value": 1,
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "solo"
+      }
+     ],
+     "note": ""
+    },
+    "edad": {
+     "value": [],
+     "status": "doubtful",
+     "quotes": [],
+     "note": "Falta una edad"
+    },
+    "empleo": {
+     "value": "autónomo",
+     "status": "ok",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "soy autonomo"
+      }
+     ],
+     "note": ""
+    },
+    "ingresos": {
+     "value": 2000,
+     "status": "doubtful",
+     "quotes": [
+      {
+       "msg": 2,
+       "text": "entre 2000 y 3000"
+      }
+     ],
+     "note": "Rango; depende del mes"
+    },
+    "deudas": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    },
+    "ahorro": {
+     "value": null,
+     "status": "missing",
+     "quotes": [],
+     "note": ""
+    }
+   },
+   "plazo_weeks": null,
+   "ingresos_max": 3000,
+   "income_net_of_debts": "unknown",
+   "open_questions": [
+    {
+     "msg": 4,
+     "text": "y esto es fiable? no sera una estafa no"
+    }
+   ],
+   "special_requests": []
+  }
+ },
+ "draft": {
+  "key": "db9074a0ad2d2977",
+  "chat": "88da159eafad9310",
+  "model": "claude-haiku-5-5",
+  "reply_kind": "ask_info",
+  "value": {
+   "blocks": [
+    {
+     "label": "Tu pregunta",
+     "text": "¡Hola, Javier! Entendemos la duda. Libeen compra la casa que tú eliges y te la alquila con opción a compra, con el precio de compra fijado por contrato desde el primer día. Operamos a través de una SOCIMI regulada por la CNMV."
+    },
+    {
+     "label": "Datos que necesitamos",
+     "text": "Para orientarte, ¿nos confirmas tus ingresos netos mensuales, cuánto tienes ahorrado y si tienes deudas? Hablas de entre 2.000 € y 3.000 € al mes; ¿cuál sería una cifra media?"
+    },
+    {
+     "label": "Siguiente paso",
+     "text": "Envíanos esos datos por aquí y seguimos con el análisis."
+    }
+   ],
+   "key_spans": [
+    {
+     "block": 1,
+     "text": "2.000 €",
+     "ref": "field.ingresos_min"
+    },
+    {
+     "block": 1,
+     "text": "3.000 €",
+     "ref": "field.ingresos_max"
+    },
+    {
+     "block": 1,
+     "text": "¿nos confirmas tus ingresos netos mensuales, cuánto tienes ahorrado y si tienes deudas?",
+     "ref": "decision"
+    }
+   ]
+  }
+ }
+}

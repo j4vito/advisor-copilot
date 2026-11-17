@@ -6,13 +6,15 @@ A first version of a tool that saves time for Libeen's sales advisors without ta
 
 Every lead starts as a WhatsApp chat. Today an advisor reads each one, pulls out the data by hand (where, when, how many buyers, income, savings), checks it against the rules and writes a reply. This prototype does the reading, the checking and the first draft. The advisor only decides.
 
+The idea is to give the advisor exactly what they would look for in any chat, and nothing else. The eight fields are the advisor's own checklist to qualify a lead, extracted with the quote they came from. When something is missing, the draft does not try to sell: it asks only for what blocks the decision, most important first and at most three things (`draft.ask_priority`, `draft.max_questions`), so the next message from the client brings what is needed. The advisor stops reading, extracting and typing, and spends their time only on the decision: approve the reply, edit it, or take over.
+
 ## The approach
 
 One screen, three columns: the inbox, the chat, and a decision panel.
 
 - **The model reads.** It turns a chat into eight fields, each with the exact quote it came from. The quote is highlighted in the chat, so the advisor sees where every number comes from. If a quote is not really in the chat, code drops it and marks the field as doubtful.
 - **Rules decide.** Plain code compares the fields with the thresholds in `config/rules.yaml` (minimum income after debts, minimum savings, time needed to buy). It sets each field's status, runs the price simulation, and picks the reply type: offer, ask for more data, or decline. No model is involved, so the result is the same every time and can be tested.
-- **The model writes.** It drafts the reply for the type the rules chose, using only numbers the rules produced. Code then checks the draft: no forbidden words such as "aprobado", no invented numbers.
+- **The model writes.** It drafts the reply for the type the rules chose, using only numbers the rules produced; for "ask for more data", it asks only for the fields that block the decision. Code then checks the draft: no forbidden words such as "aprobado", no invented numbers.
 - **The advisor approves.** Nothing is sent without a click. Every send is logged, including whether the advisor edited the text.
 
 The panel always shows the same rows in the same order, so an advisor who knows the screen sees what is missing without reading. Income minus debts is shown as a visible sum, because it is a calculation, not something the client said.
